@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState, createContext } from 'react';
+import Appcompo from './Appcompo';
+
+export const UserContext = createContext();
 
 function App() {
+  const [a, setA] = useState()
+
+  const [user, setUser] = useState('ok')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/xApp.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <UserContext.Provider value={user} >
+      <Appcompo />
+    </UserContext.Provider>
   );
 }
 
