@@ -1,6 +1,8 @@
 import React, { useState, useReducer, useRef, useEffect } from 'react'
 import './Demo.css'
 
+import Local from './Local'
+
 
 export default function Demo4() {
     const [namesubmit, setNamesubmit] = useState('add')
@@ -84,7 +86,7 @@ export default function Demo4() {
 
         }
     }
-    const test = useRef(data)
+    const test = useRef(JSON.parse(localStorage.getItem("foo")) || JSON.parse(localStorage.getItem("foo")))
 
     const [todos, dispatch] = useReducer(reducer, test.current);
 
@@ -151,6 +153,7 @@ export default function Demo4() {
 
     return (
         <div >
+            {/* {alert(Local)} */}
             {/* <div style={{ textDecoration: 'line-through' }}>
                 ay
             </div> */}
@@ -172,7 +175,7 @@ export default function Demo4() {
 
                 {console.log(localStorage.foo)}
                 {
-                    test.current.map((e, i) =>
+                    todos.map((e, i) =>
                         <div key={i} className='item' style={{ textDecoration: e.line ? 'line-through' : '' }} onClick={() => onlickline(e, i)}>
                             <div style={{ fontSize: '14px' }}>
                                 <iconify-icon icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
