@@ -86,7 +86,7 @@ export default function Demo4() {
 
         }
     }
-    const test = useRef(JSON.parse(localStorage.getItem("foo")) || JSON.parse(localStorage.getItem("foo")))
+    const test = useRef(Local() || JSON.parse(localStorage.getItem("foo")))
 
     const [todos, dispatch] = useReducer(reducer, test.current);
 
@@ -127,7 +127,7 @@ export default function Demo4() {
 
     const [hiden, setHiden] = useState()
     const cl = (item) => {
-        console.log("item:", item)
+        // console.log("item:", item)
         setInputvalue(item.title)
         setNamesubmit('edit')
         refInput.current = item.id
@@ -135,13 +135,13 @@ export default function Demo4() {
         // setHiden(pre => {
         //     item.id
         // })
-        console.log(refInput.current)
+        // console.log(refInput.current)
     }
 
     const deletel = (item, index) => {
         refInput.current = index
         dispatch({ type: 'delete', index: refInput.current })
-        console.log('ay' + refInput.current)
+        // console.log('ay' + refInput.current)
     }
 
     // const ay = ;
@@ -153,6 +153,7 @@ export default function Demo4() {
 
     return (
         <div >
+            {console.log(test.current)}
             {/* {alert(Local)} */}
             {/* <div style={{ textDecoration: 'line-through' }}>
                 ay
