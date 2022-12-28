@@ -40,10 +40,20 @@ export default function Demo4() {
     const reducer = (state, action) => {
         switch (action.type) {
             case 'add':
-                const cloneState = [...state]
-                cloneState.push({ id: (data.length + 1), title: inputvalue, check: true, line: false, })
-                setInputvalue('')
-                return cloneState
+                let aa = state.find(element => element.title == inputvalue);
+                if (typeof aa != 'undefined') {
+                    alert('nội dung vừa nhập đã tôn tại')
+                    return state
+
+                }
+                else {
+                    const cloneState = [...state];
+                    //  console.log('ay', cloneState.length); console.log('ay', cloneState); console.log('id', cloneState[cloneState.length - 1].id)
+                    cloneState.push({ id: state[state.length - 1].id + 1, title: inputvalue, check: true, line: false, })
+                    setInputvalue('')
+                    return cloneState
+                }
+
 
             case 'check':
                 return state.map(e => {
@@ -57,6 +67,7 @@ export default function Demo4() {
                     if (e.id == action.id) {
                         const ui = inputvalue
                         setInputvalue('')
+                        setNamesubmit('add')
                         return { ...e, title: ui }
 
                     }
@@ -86,7 +97,7 @@ export default function Demo4() {
 
         }
     }
-    const test = useRef(Local() || JSON.parse(localStorage.getItem("foo")))
+    const test = useRef(JSON.parse(localStorage.getItem("foo")) || Local())
 
     const [todos, dispatch] = useReducer(reducer, test.current);
 
@@ -153,7 +164,7 @@ export default function Demo4() {
 
     return (
         <div >
-            {console.log(test.current)}
+            {/* {console.log(test.current)} */}
             {/* {alert(Local)} */}
             {/* <div style={{ textDecoration: 'line-through' }}>
                 ay
@@ -174,7 +185,7 @@ export default function Demo4() {
                 </div>
 
 
-                {console.log(localStorage.foo)}
+                {/* {console.log(localStorage.foo)} */}
                 {
                     todos.map((e, i) =>
                         <div key={i} className='item' style={{ textDecoration: e.line ? 'line-through' : '' }} onClick={() => onlickline(e, i)}>
