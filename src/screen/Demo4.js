@@ -49,7 +49,7 @@ export default function Demo4() {
                 else {
                     const cloneState = [...state];
                     //  console.log('ay', cloneState.length); console.log('ay', cloneState); console.log('id', cloneState[cloneState.length - 1].id)
-                    cloneState.push({ id: state[state.length - 1].id + 1, title: inputvalue, check: true, line: false, })
+                    cloneState.push({ id: state.length == 0 ? 0 : state[state.length - 1].id + 1, title: inputvalue, check: true, line: false, })
                     setInputvalue('')
                     return cloneState
                 }
@@ -90,6 +90,12 @@ export default function Demo4() {
                     else
                         return e
                 })
+
+            case 'search':
+                if (inputvalue == '')
+                    return state
+                else return state.filter(word => word.title == inputvalue)
+
 
 
             default:
@@ -160,6 +166,18 @@ export default function Demo4() {
     const onlickline = (item, index) => {
         refInput.current = item.id
         dispatch({ type: 'line', id: refInput.current })
+        dispatch({ type: 'check', id: refInput.current })
+
+    }
+    const [searchay, setSearchay] = useState(false)
+    const [todos2, setTodos2] = useState()
+
+    const onclicksearch = () => {
+        setSearchay(true)
+        setTodos2(todos.filter(e => e.title == inputvalue))
+
+        // dispatch({ type: 'search', title: inputvalue })
+
     }
 
     return (
@@ -180,17 +198,29 @@ export default function Demo4() {
 
                     <input name='text' className='textinput' value={inputvalue} onChange={onchangeinput} placeholder='Enter title' />
                     {/* <input type='hidden' value={hiden} /> */}
-                    <input className='button' type='submit' value={namesubmit} onClick={onclicksubmit} />
+                    <div style={{ width: '64%' }}>
+                        <input className='button' type='submit' value={namesubmit} onClick={onclicksubmit} />
+
+                        <input className='search' type='submit' value='search' onClick={onclicksearch} />
+                    </div>
+
 
                 </div>
 
 
                 {/* {console.log(localStorage.foo)} */}
                 {
-                    todos.map((e, i) =>
-                        <div key={i} className='item' style={{ textDecoration: e.line ? 'line-through' : '' }} onClick={() => onlickline(e, i)}>
-                            <div style={{ fontSize: '14px' }}>
-                                <iconify-icon icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+                    searchay ? todos2.map((e, i) =>
+                        <div key={i} className='item' style={{ textDecoration: e.line ? 'line-through' : '' }} >
+                            {/* <div className='title_item' style={{ fontSize: '14px', wordWrap: 'break-word', width: '82%' }}> */}
+
+                            <div className='title_item' style={{ fontSize: '14px' }}>
+                                {
+                                    !e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+
+
+                                }
+
                                 {e.title}
                             </div>
 
@@ -208,6 +238,35 @@ export default function Demo4() {
                             </div>
                         </div>
                     )
+                        :
+                        todos?.map((e, i) =>
+                            <div key={i} className='item' style={{ textDecoration: e.line ? 'line-through' : '' }} >
+                                {/* <div className='title_item' style={{ fontSize: '14px', wordWrap: 'break-word', width: '82%' }}> */}
+
+                                <div className='title_item' style={{ fontSize: '14px' }}>
+                                    {
+                                        !e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+
+
+                                    }
+
+                                    {e.title}
+                                </div>
+
+                                <div>
+                                    <span onClick={() => cl(e)}>
+                                        <button className='hidebutton' >
+                                            <iconify-icon icon="majesticons:edit-pen-2" style={{ color: "gray", }}></iconify-icon>
+                                        </button>
+                                    </span>
+                                    <span onClick={() => deletel(e, i)}>
+                                        <button className='hidebutton'>
+                                            <iconify-icon icon="ic:baseline-delete" style={{ color: "gray" }}></iconify-icon>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        )
                 }
                 {/* {console.log(todos)} */}
 

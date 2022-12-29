@@ -32,7 +32,7 @@
 .divinput {
     width: 64%;
     /* border: solid 1px gray; */
-    aspect-ratio: 7/2;
+    aspect-ratio: 6/2;
 
     display: flex;
     flex-direction: column;
@@ -45,12 +45,31 @@
 }
 
 .button {
-    width: 18%;
+    /* width: 18%; */
+    width: 39%;
     background-color: rgb(95, 0, 184);
     color: white;
     font-size: 12px;
     border: none;
-    height: 27%;
+    /* height: 27%; */
+
+    height: 96%;
+}
+
+
+.search {
+    width: 40%;
+    background-color: rgb(95, 0, 184);
+    color: white;
+    font-size: 12px;
+    border: none;
+    /* height: 27%; */
+
+    height: 96%;
+    position: relative;
+    left: 2%;
+    /* top: -27% */
+    /* margin-top: 10px; */
 }
 
 .item {
@@ -62,15 +81,27 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .hidebutton {
     background-color: white;
     border: none;
+
 }
 
 .hidebutton:hover {
-    border: solid 1px gray;
+    /* border: solid 1px gray; */
+    cursor: grab
 }
 
 .iconcheck {}
+
+.title_item {
+    width: 80%;
+
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+}
