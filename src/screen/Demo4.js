@@ -216,7 +216,8 @@ export default function Demo4() {
 
                             <div className='title_item' style={{ fontSize: '14px' }}>
                                 {
-                                    !e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+                                    e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+
 
 
                                 }
@@ -245,7 +246,7 @@ export default function Demo4() {
 
                                 <div className='title_item' style={{ fontSize: '14px' }}>
                                     {
-                                        !e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
+                                        e.check ? <iconify-icon onClick={() => onlickline(e, i)} icon="uiw:circle-o" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon> : <iconify-icon onClick={() => onlickline(e, i)} icon="material-symbols:check-circle" style={{ color: "purple", position: "relative", top: "2px", marginRight: '4px' }}></iconify-icon>
 
 
                                     }
