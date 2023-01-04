@@ -41,7 +41,7 @@ export default function Demo() {
     return (
 
         <div>
-            {todos.map((todo) => (
+            {/* {todos.map((todo) => (
                 <div key={todo.id}>
                     <label>
                         <input
@@ -53,8 +53,9 @@ export default function Demo() {
                         {console.log(todos)}
                     </label>
                 </div>
-            ))}
+            ))} */}
 
+            {console.log('ay')}
 
         </div >
 

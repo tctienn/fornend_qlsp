@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState, createContext } from 'react';
 import Appcompo from './Appcompo';
+import { Provider } from 'react-redux';
+import { store } from './Redux/Store';
 
 export const UserContext = createContext();
 
@@ -12,9 +14,12 @@ function App() {
 
   return (
 
-    <UserContext.Provider value={user} >
+    // <UserContext.Provider value={user} >
+    <Provider store={store}>
       <Appcompo />
-    </UserContext.Provider>
+    </Provider>
+
+    // </UserContext.Provider>
   );
 }
 

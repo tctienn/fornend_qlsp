@@ -78,8 +78,8 @@ export default function Demo4() {
 
             case 'delete':
                 const tes = [...state]
-                tes.splice(action.index, 1);
-                return tes
+                // tes.splice(action.index, 1);
+                return tes.filter(e => e.id !== action.id)
 
             case 'line':
 
@@ -91,10 +91,10 @@ export default function Demo4() {
                         return e
                 })
 
-            case 'search':
-                if (inputvalue == '')
-                    return state
-                else return state.filter(word => word.title == inputvalue)
+            // case 'search':
+            //     if (inputvalue == 'ui')
+            //         return state
+            //     else return state.filter(word => word.title == inputvalue)
 
 
 
@@ -112,7 +112,7 @@ export default function Demo4() {
 
         localStorage.setItem('foo', JSON.stringify(todos))
         test.current = JSON.parse(localStorage.getItem("foo"))
-
+        setSearchay(false)
         // localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
@@ -157,7 +157,7 @@ export default function Demo4() {
 
     const deletel = (item, index) => {
         refInput.current = index
-        dispatch({ type: 'delete', index: refInput.current })
+        dispatch({ type: 'delete', id: item.id })
         // console.log('ay' + refInput.current)
     }
 
@@ -173,7 +173,11 @@ export default function Demo4() {
     const [todos2, setTodos2] = useState()
 
     const onclicksearch = () => {
-        setSearchay(true)
+        if (inputvalue == '')
+            setSearchay(false)
+        else
+            setSearchay(true)
+
         setTodos2(todos.filter(e => e.title == inputvalue))
 
         // dispatch({ type: 'search', title: inputvalue })
@@ -192,6 +196,7 @@ export default function Demo4() {
             <div className='on'>
                 todo app
             </div>
+            {console.log('ayy')}
 
             < div style={{ margin: 'auto' }} className='ay' >
                 <div className='divinput' >
@@ -250,7 +255,7 @@ export default function Demo4() {
 
 
                                     }
-
+                                    {/* {console.log('uiiiiiiiii')} */}
                                     {e.title}
                                 </div>
 
@@ -269,7 +274,7 @@ export default function Demo4() {
                             </div>
                         )
                 }
-                {/* {console.log(todos)} */}
+                {/* {00le.log(todos)} */}
 
                 {/* {inputvalue} */}
             </div >
