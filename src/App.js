@@ -4,6 +4,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import Appcompo from './Appcompo';
 import { Provider } from 'react-redux';
 import { store } from './Redux/Store';
+import { thunk_funtion } from './Redux/Redux';
 
 export const UserContext = createContext();
 
@@ -11,6 +12,7 @@ function App() {
   const [a, setA] = useState()
 
   const [user, setUser] = useState('ok')
+
 
   return (
 

@@ -14,8 +14,8 @@ export default function Appcompo() {
         <BrowserRouter>
             <Routes>
                 {/* <Route path="/" element={<Demo2 />} /> */}
-                <Route path="/" element={<DemoRedux />} />
-                {/* <Route path="/" element={<Demo4 />} /> */}
+                {/* <Route path="/" element={<DemoRedux />} /> */}
+                <Route path="/" element={<Demo4 />} />
                 <Route path='/demo2/:id' element={<Demo />} />
                 <Route>lỗi </Route>
 

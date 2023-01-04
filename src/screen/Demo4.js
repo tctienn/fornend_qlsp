@@ -79,6 +79,7 @@ export default function Demo4() {
             case 'delete':
                 const tes = [...state]
                 // tes.splice(action.index, 1);
+                setInputvalue('')
                 return tes.filter(e => e.id !== action.id)
 
             case 'line':
