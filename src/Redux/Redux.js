@@ -8,10 +8,9 @@ const data = {
 
 
 export const thunk_funtion = createAsyncThunk('reduc1/thunk_funtion', async () => {
-    const response = await api.get('/products')
+    const response = await api.get('/products/1')
     // console.log('ay', response.data)
     return response.data
-
 
 })
 
