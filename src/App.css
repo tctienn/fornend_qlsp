@@ -32,7 +32,36 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.ay {
+  animation: fade-in-move-down 0.7s;
+}
+
+@keyframes fade-in-move-down {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#scroller {
+  overflow: scroll;
+  height: 150px;
+  width: 150px;
+  border: 5px dashed orange;
+}
+
+#output {
+  padding: 1rem 0;
 }

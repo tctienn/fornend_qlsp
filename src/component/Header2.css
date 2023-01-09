@@ -1,0 +1,87 @@
+.border {
+  /* border: solid 1px black; */
+  width: 100%;
+  aspect-ratio: 29/2;
+  display: flex;
+}
+
+.line {
+  width: 0;
+  border-bottom: solid 1px black;
+
+  transition: width 2s;
+}
+
+.line:hover {
+  /* opacity: 0.2; */
+  /* text-decoration: underline; */
+  /* transform: scaleX(0); */
+  /* transition: transform 250ms ease-in-out;
+    transform-origin: 100% 50%; */
+  border-bottom: solid 1px black;
+  width: 40px;
+  /* border-bottom-width: 10px; */
+  /* transition-property: opacity, width;
+    transition-duration: 4s, 2s; */
+
+  /* transform: scaleX(1); */
+
+
+}
+
+/* .page-link {
+    color: #666;
+    display: inline-block;
+    // min-width: 60px;
+    text-align: center;
+  
+    &::after {
+      display: block;
+      content: '';
+      border-bottom: solid 3px #019fb6;
+      transform: scaleX(0); //scaleX: biến đổi tỉ lệ theo trục x 
+      transition: transform 250ms ease-in-out;  // ease-in-out : chỉ định hiệu ứng chuyển tiếp với thời gian bắt đầu và kết thúc chậm
+      transform-origin: 100% 50%;
+    }
+  
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: 0% 50%;
+    }
+  } */
+
+
+.Purchase {
+  width: 22%;
+  height: 100px;
+  /* border: solid 1px black; */
+}
+
+.Purchase_c2 {
+  width: 10px;
+  height: 10px;
+  /* border: solid 1px rgb(241, 125, 214); */
+
+  margin-left: 30%;
+  width: 45%;
+  height: 50%;
+  margin-top: 7%;
+  background-color: white;
+
+  border-radius: 6px;
+  /* box-shadow: ; */
+  box-shadow: 2px 9px 20px -12px #888888;
+  align-items: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: margin-top 0.8s;
+}
+
+.Purchase_c2:hover {
+  margin-top: 6%;
+
+}
