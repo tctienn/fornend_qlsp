@@ -15,9 +15,26 @@ export default function Home() {
         var scroller = document.querySelector("#scroller");
         scroller.addEventListener("scroll", (event) => {
             // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            setAs(`scrollTop: ${scroller.scrollTop}`)
+            setAs(scroller.scrollTop)
         }, [as]);
     })
+
+
+    const [trx, setTrx] = useState(100)
+    var object = document.getElementById('container');
+    object.addEventListener('mousemove', function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        document.getElementById("x").innerHTML = x;
+        document.getElementById("y").innerHTML = y;
+        setTrx(-(trx + x) / 10)
+    });
+
+    const clearCoor = () => {
+        // setTrx(100)
+        alert('ay')
+    }
+
     return (
         <div style={{
             display: 'flex',
@@ -27,7 +44,7 @@ export default function Home() {
             <Header />
 
 
-            <div style={{
+            <div id='scroller' style={{
                 // // border: '3px solid #00ff00',
                 width: '100%',
                 height: '660px',
@@ -45,11 +62,18 @@ export default function Home() {
             }}>
                 <Header2 scrol={as} />
 
-                <div className='ay' style={{ width: '100px', height: '100px', backgroundColor: 'purple' }}>
-                    Home
+                <div id="container" onmouseout={() => clearCoor()} className='ay' style={{ width: '100%', height: '200px', backgroundColor: 'purple' }}>
+                    <div className='imgstranf' style={{ left: `${trx}px`, backgroundColor: 'white' }}>
+                        a
+                    </div>
+
+                    <p>Tọa độ X: <span id="x"></span> - Tọa độ Y: <span id="y"></span></p>
                 </div>
 
-                <div id="container">
+
+
+
+                {/* <div id="container">
                     <div id="scroller">
                         <p>
                             Far out in the uncharted backwaters of the unfashionable end of the
@@ -62,7 +86,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div id="output">scrollTop: {as}</div>
+                <div id="output">scrollTop: {as}</div> */}
                 <div>
                     s consists of two syntaxes. The original syntax, called "the indented syntax," uses a syntax similar to Haml.[2] It uses indentation to separate code blocks and newline characters to separate rules. The newer syntax, SCSS (Sassy CSS), uses block formatting like that of CSS. It uses braces to denote code blocks and semicolons to separate rules within a block. The indented syntax and SCSS files are traditionally given the extensions .sass and .scss, respectively.
 

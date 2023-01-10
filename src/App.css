@@ -55,13 +55,17 @@
   }
 }
 
-#scroller {
-  overflow: scroll;
-  height: 150px;
-  width: 150px;
-  border: 5px dashed orange;
-}
 
-#output {
-  padding: 1rem 0;
+
+/* //   */
+.imgstranf {
+  transform: rotate(-44deg);
+  width: 200px;
+  height: 100px;
+  position: relative;
+  /* -moz-transform: rotate(-15deg);
+  -webkit-transform: rotate(-40);
+  -o-transform: rotate(-15deg); */
+
+  /* display: none; */
 }

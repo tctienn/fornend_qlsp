@@ -3,6 +3,41 @@
   width: 100%;
   aspect-ratio: 29/2;
   display: flex;
+
+  opacity: 1;
+  transition: opacity 0.8s;
+}
+
+.border2 {
+  /* border: solid 1px black; */
+  width: 100%;
+  aspect-ratio: 29/2;
+  display: flex;
+
+  background-color: white;
+  opacity: 0.94;
+  /* opacity: 0; */
+  position: fixed;
+  /* transition: opacity 0.8s; */
+
+  animation: fade-in-move-down 0.7s;
+}
+
+/* 
+.border2 {
+  animation: fade-in-move-down 0.7s;
+} */
+
+@keyframes fade-in-move-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-4rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .line {

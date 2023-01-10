@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './Header2.css'
 
-export default function Header2(props) {
+export default function Header2({ scrol }) {
+
+
 
     return (
-        <div className='border'>
+        <div className={scrol <= 10 ? 'border' : 'border2'}>
             <img src='https://reactdemo.hasthemes.com/flone/p2/img/logo/flone-black.png' style={{
                 // width: '170px',
                 height: '41%',
@@ -24,7 +26,7 @@ export default function Header2(props) {
             }}>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Demos {props.scrol}
+                        Demos
                     </div>
                 </div>
                 <div style={{ width: '100px' }}>
