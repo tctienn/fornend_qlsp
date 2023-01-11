@@ -9,6 +9,7 @@ export default function Header() {
             <button style={{ backgroundColor: '#82b440', width: '93px', height: '65%', color: 'white', borderRadius: '5px', marginRight: '10px' }}>
                 Buy now
             </button>
+
         </div >
     )
 }

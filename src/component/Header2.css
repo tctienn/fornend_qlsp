@@ -6,6 +6,8 @@
 
   opacity: 1;
   transition: opacity 0.8s;
+
+  background-color: white;
 }
 
 .border2 {

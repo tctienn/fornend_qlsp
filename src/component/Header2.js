@@ -26,30 +26,73 @@ export default function Header2({ scrol }) {
             }}>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Demos
+                        Home
                     </div>
                 </div>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Features
+                        Shop
                     </div>
                 </div>
 
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Support
+                        Collecttion
+                    </div>
+                </div>
+                <div style={{ width: '100px' }}>
+                    <div className='line'>
+                        pages
+                    </div>
+                </div>
+                <div style={{ width: '100px' }}>
+                    <div className='line'>
+                        blog
+                    </div>
+                </div>
+                <div style={{ width: '100px' }}>
+                    <div className='line'>
+                        Contact Us
                     </div>
                 </div>
 
             </div>
             <div className='Purchase'>
-                <div className='Purchase_c2'>
-                    <div>
-                        Purchase
-                    </div>
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    flexDirection: 'row'
+                }} className='Purchase_c2'>
+
+                    <iconify-icon icon="et:profile-female"></iconify-icon>
+                    <iconify-icon icon="fe:random"></iconify-icon>
+                    <iconify-icon icon="mdi:cards-heart-outline"></iconify-icon>
+                    <iconify-icon icon="ph:shopping-bag"></iconify-icon>
                 </div>
             </div>
 
-        </div>
+            <div>
+                <div style={{ width: '100px' }}>
+                    defalts
+                    <select>
+                        <option>dafault</option>
+                        <option>s</option>
+
+                        <option>s</option>
+
+                    </select>
+                </div>
+                <div>
+
+                </div>
+            </div>
+
+            {/* <iconify-icon icon="et:profile-female"></iconify-icon> */}
+
+            {/* <iconify-icon icon="mdi:tick-network"></iconify-icon> */}
+
+            {/* <iconify-icon icon="et:profile-female"></iconify-icon> */}
+
+        </div >
     )
 }

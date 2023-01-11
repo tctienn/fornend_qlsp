@@ -9,6 +9,7 @@ import Demo2 from './screen/Demo2';
 import Demo4 from './screen/Demo4';
 import DemoRedux from './screen/DemoRedux';
 import Home from './screen/Home';
+import Products from './screen/Products';
 
 export default function Appcompo() {
     return (
@@ -26,6 +27,8 @@ export default function Appcompo() {
 
 
                 <Route path='/' element={<Home />} />
+                {/* <Route path='/' element={< Products />} /> */}
+
             </Routes>
         </BrowserRouter>
     )

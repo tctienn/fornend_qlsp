@@ -69,3 +69,84 @@
 
   /* display: none; */
 }
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+li {
+  width: 24%;
+}
+
+#scroll-container {
+  border: 3px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#scroll-text {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.colora {
+  color: transparent;
+  background: -webkit-linear-gradient(right, #ffb87d 5%, #ff3d99 95%);
+  /* background: -webkit-gradient(linear,
+      right top,
+      left top,
+      color-stop(5%, #ffb87d),
+      color-stop(95%, #ff3d99));
+  background: -o-linear-gradient(right, #ffb87d 5%, #ff3d99 95%);
+  background: linear-gradient(-90deg, #ffb87d 5%, #ff3d99 95%);
+  -webkit-background-clip: text; */
+  background-clip: text;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+}
