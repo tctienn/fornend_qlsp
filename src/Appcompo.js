@@ -10,6 +10,8 @@ import Demo4 from './screen/Demo4';
 import DemoRedux from './screen/DemoRedux';
 import Home from './screen/Home';
 import Products from './screen/Products';
+import Product from './screen/Product';
+
 
 export default function Appcompo() {
     return (
@@ -26,7 +28,9 @@ export default function Appcompo() {
 
 
 
-                <Route path='/' element={<Home />} />
+                <Route path='/' exact element={<Home />} />
+                <Route path='/product/:id' element={<Product />} />
+
                 {/* <Route path='/' element={< Products />} /> */}
 
             </Routes>

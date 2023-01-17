@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { getProducts } from '../Axiot/api'
+import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
+import { products } from '../data/data'
 
 export default function Home() {
 
@@ -10,8 +13,6 @@ export default function Home() {
     // const output = document.querySelector("#output");
 
     const [as, setAs] = useState('')
-
-
 
     useEffect(() => {
         var scroller = document.querySelector("#scroller");
@@ -51,6 +52,15 @@ export default function Home() {
         // dispatch(thunk_funtion())
     }, [])
 
+
+    /// ayyy
+    const i = [1, 2, 3, 4, 5]
+
+    const navigation = useNavigate()
+
+    const onclickproduct = (id) => {
+        navigation(`/product/1`)
+    }
     return (
         <div style={{
             display: 'flex',
@@ -66,88 +76,662 @@ export default function Home() {
                 height: '660px',
                 // overflowX: 'hidden',
                 overflowY: 'auto',
-                backgroundColor: '#f3f4f6'
+                // backgroundColor: '#f3f4f6'
 
             }}>
                 <Header2 scrol={as} />
 
-                <div id="container" onMouseOut={clearCoor} onMouseMove={handleMouseMove} className='ay' style={{ width: '100%', height: '200px' }}>
-                    <div>
-                        <div className='imgstranf' style={{ left: `${trx}px`, backgroundColor: 'white' }}>
-                            <img src="https://reactdemo.hasthemes.com/flone/p2/img/revoulation/brook-landing-new-slider-slide-image-01.png" alt="react logo" style={{ width: '400px', }} />
-                            {/* <image width='100px' height='100px' src='https://reactdemo.hasthemes.com/flone/p2/img/revoulation/brook-landing-new-slider-slide-image-01.png' /> */}
-                        </div>
-                        <div className='imgstranf' style={{ width: '70px', height: '100px', left: `${trx}px`, backgroundColor: 'white' }}>
-                            <img src="https://reactdemo.hasthemes.com/flone/p2/img/revoulation/brook-landing-new-slider-slide-image-01.png" alt="react logo" style={{ width: '400px', }} />
+                <div className='slide'>
+                    <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+                        <div className="carousel-inner">
+                            <div className="carousel-item active" data-bs-interval="10000">
+                                {/* <img src="..." className="d-block w-100" alt="..." /> */}
+                                <div className='item_slide'>
+                                    <div>
+                                        <div>
+                                            <b>
+                                                Summer 2024 Offer Collecttion ss
+                                            </b>
+                                        </div>
 
-                        </div>
-                        <div className='imgstranf' style={{ width: '200px', height: '100px', left: `${trx}px`, backgroundColor: 'white' }}>
-                            <img src="https://reactdemo.hasthemes.com/flone/p2/img/revoulation/brook-landing-new-slider-slide-image-01.png" alt="react logo" style={{ width: '400px', }} />
+                                        <button>
+                                            Buy now
+                                        </button>
+                                    </div>
+                                    <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-hm1-2.png' className='img_slide' />
+                                </div>
+                            </div>
+                            <div className="carousel-item" data-bs-interval="2000">
+                                {/* <img src="..." className="d-block w-100" alt="..." /> */}
+                                <div className='item_slide'>
+                                    <div>
+                                        <div>
+                                            <b>
+                                                Summer 2024 Offer Collecttion ss
+                                            </b>
+                                        </div>
 
+                                        <button>
+                                            Buy now
+                                        </button>
+                                    </div>
+                                    <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
+                                </div>
+                            </div>
+                            <div className="carousel-item">
+                                {/* <img src="..." className="d-block w-100" alt="..." /> */}
+                                <div className='item_slide'>
+                                    <div>
+                                        <div>
+                                            <b>
+                                                Summer 2024 Offer Collecttion ss
+                                            </b>
+                                        </div>
+
+                                        <button>
+                                            Buy now
+                                        </button>
+                                    </div>
+                                    <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
+                                </div>
+                            </div>
                         </div>
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
                     </div>
 
-                    <div>
-                        Flone Minimal React Template
-                    </div>
 
-                </div >
-
-                <ul  >
-                    <li>
-                        <b>
-                            Latest React & Redux
-                        </b>
-                        <br />
-                        Latest React and Redux used.
+                </div>
+                <br /><br /><br />
+                <ul className='ul_free_icon' >
+                    <li id='free_icon'>
+                        <img className='icon_free ' src='https://flone.jamstacktemplates.dev/assets/img/icon-img/support-1.png' />
+                        <div >
+                            <b>
+                                Free Shipping
+                            </b>
+                            <div>
+                                Free shipping on all oder
+                            </div>
+                        </div>
                     </li>
-                    <li>
-                        <b>
-                            Mega Menu
-                        </b>
-                        <br />
-                        Mega Menu is the door that has the entrance to every pages of your site. It navigates things for bringing ease.
+                    <li id='free_icon'>
+                        <img className='icon_free ' src='https://flone.jamstacktemplates.dev/assets/img/icon-img/support-2.png' />
+                        <div >
+                            <b>
+                                Free Shipping
+                            </b>
+                            <div>
+                                Free shipping on all oder
+                            </div>
+                        </div>
                     </li>
-                    <li>
-                        <b>
-                            Responsive Design
-                        </b>
-                        <br />
-                        Flone is super responsive & work perfectly in all devices.
+                    <li id='free_icon'>
+                        <img className='icon_free ' src='https://flone.jamstacktemplates.dev/assets/img/icon-img/support-3.png' />
+                        <div >
+                            <b>
+                                Free Shipping
+                            </b>
+                            <small>
+                                Free shipping on all oder
+                            </small>
+                        </div>
                     </li>
-                    <li >
-                        <b>
-                            Real Support
-                        </b>
-                        <br />
-                        We provide 7 days a week one by one real support.
+                    <li id='free_icon'>
+                        <img className='icon_free ' src='https://flone.jamstacktemplates.dev/assets/img/icon-img/support-4.png' />
+                        <div >
+                            <b>
+                                Free Shipping
+                            </b>
+                            <div>
+                                Free shipping on all oder
+                            </div>
+                        </div>
                     </li>
                 </ul >
 
+                <br />
+
+                <div >
+                    <center>
+                        <h2 style={{ height: '2px', backgroundColor: 'black', width: '48px', position: 'relative', top: '22px', left: '-84px' }}>
+
+                        </h2>
+                        DAILY DEALS
+                        <h2 style={{ height: '2px', backgroundColor: 'black', width: '48px', position: 'relative', top: '-11px', left: '84px' }}>
+
+                        </h2>
+                        <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '37%' }}>
+                            <div>
+                                New Arrivals
+                            </div>
+                            <div>
+                                Best Sellers
+                            </div>
+                            <div>
+                                Sale Items
+                            </div>
+                        </div>
+                    </center>
+
+
+                </div>
 
                 {/* <marquee behavior='scroll' >Hoc HTML tai VietJack - Vi du cach su dung the marquee.</marquee> */}
 
-                < div div id="scroll-text" style={{ height: '400px', width: '2000px', backgroundImage: 'url("https://reactdemo.hasthemes.com/flone/p2/img/preview-image/brook-landing-marque-image-01.jpg")' }
-                }>
-                    <center className='colora'>38</center>
-                </ div>
+                <div className='products'>
+                    {products.map((e, ii) =>
+                        <div key={ii} className='product' onClick={() => onclickproduct(e.id)}>
+                            <div className='mini_add'>
+                                new
+                            </div>
+                            <div className='img_product2'>
+                                <img className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
+                                <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                    <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                        <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                    </div>
+                                    <div className='hide_mini2'>
+                                        buy now
+                                    </div>
+                                    <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                        <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <img className='img_product' style={{ width: '100%', height: '80%' }} src={e.img1} />
 
-
-                {/* <div id="container">
-                    <div id="scroller">
-                        <p>
-                            Far out in the uncharted backwaters of the unfashionable end of the
-                            western spiral arm of the Galaxy lies a small unregarded yellow sun.
-                            Orbiting this at a distance of roughly ninety-two million miles is an
-                            utterly insignificant little blue green planet whose ape-descended life
-                            forms are so amazingly primitive that they still think digital watches are
-                            a pretty neat idea.
-                        </p>
-                    </div>
+                            <div className='str_product'>
+                                {e.name}
+                                <div>
+                                    {i.map(ei => <iconify-icon key={ei} icon="ic:twotone-star-outline" style={{ color: e.start >= ei ? '#ffaa00' : 'gray' }}></iconify-icon>)}
+                                </div>
+                                <div>
+                                    € <small>
+                                        {e.gia}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
-                <div id="output">scrollTop: {as}</div> */}
+                {/* <div className='products'>
 
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='product'>
+                        <div className='mini_add'>
+                            new
+                        </div>
+                        <div className='img_product2'>
+                            <img className='img_mini' style={{ width: '100%', height: '88%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/7.jpg' />
+                            <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
+                                <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                </div>
+                                <div className='hide_mini2'>
+                                    buy now
+                                </div>
+                                <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
+                                    <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <img className='img_product' style={{ width: '100%', height: '80%' }} src='https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg' />
+
+                        <div className='str_product'>
+                            Lorem ipsum kids six
+                            <div>
+                                {i.map(e => <iconify-icon icon="ic:twotone-star-outline" style={{ color: '#ffaa00' }}></iconify-icon>)}
+                            </div>
+                            <div>
+                                € <small>
+                                    11
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> */}
+                {/* //// */}
+
+                <div >
+                    <center>
+                        <h2 style={{ height: '2px', backgroundColor: 'black', width: '48px', position: 'relative', top: '22px', left: '-84px' }}>
+
+                        </h2>
+                        <b>
+                            OUT BLOG
+                        </b>
+                        <h2 style={{ height: '2px', backgroundColor: 'black', width: '48px', position: 'relative', top: '-11px', left: '84px' }}>
+
+                        </h2>
+
+
+                    </center>
+                    <div className='OUR_BLOG'>
+                        <div className='out_blog_c1'>
+                            <div className='out_blog_c2_1'>
+                                <img className='img_out_blog' src='https://flone.jamstacktemplates.dev/assets/img/blog/blog-1.jpg' />
+                            </div>
+                            <div className='out_blog_c2_2'>
+                                <p style={{ width: '53%', textAlign: 'center', margin: '0' }}>
+                                    <b>
+                                        A guide to latest trends
+                                    </b>
+                                </p>
+                                <small style={{ color: 'gray', fontStyle: 'italic' }}>
+                                    By Admin
+                                </small>
+                            </div>
+                        </div>
+                        <div className='out_blog_c1'>
+                            <div className='out_blog_c2_1'>
+                                <img className='img_out_blog' src='https://flone.jamstacktemplates.dev/assets/img/blog/blog-2.jpg' />
+                            </div>
+                            <div className='out_blog_c2_2'>
+                                <p style={{ width: '53%', textAlign: 'center', margin: '0' }}>
+                                    <b>
+                                        A guide to latest trends
+                                    </b>
+                                </p>
+                                <small style={{ color: 'gray', fontStyle: 'italic' }}>
+                                    By Admin
+                                </small>
+                            </div>
+                        </div>
+                        <div className='out_blog_c1'>
+                            <div className='out_blog_c2_1'>
+                                <img className='img_out_blog' src='https://flone.jamstacktemplates.dev/assets/img/blog/blog-3.jpg' />
+                            </div>
+                            <div className='out_blog_c2_2'>
+                                <p style={{ width: '53%', textAlign: 'center', margin: '0' }}>
+                                    <b>
+                                        A guide to latest trends
+                                    </b>
+                                </p>
+                                <small style={{ color: 'gray', fontStyle: 'italic' }}>
+                                    By Admin
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {/* /// end out blog */}
+
+                    <Fooder />
+
+
+
+                </div>
             </div >
 
         </div >

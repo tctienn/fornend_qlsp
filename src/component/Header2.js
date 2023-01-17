@@ -58,20 +58,38 @@ export default function Header2({ scrol }) {
 
             </div>
             <div className='Purchase'>
-                <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    flexDirection: 'row'
-                }} className='Purchase_c2'>
-
-                    <iconify-icon icon="et:profile-female"></iconify-icon>
-                    <iconify-icon icon="fe:random"></iconify-icon>
-                    <iconify-icon icon="mdi:cards-heart-outline"></iconify-icon>
-                    <iconify-icon icon="ph:shopping-bag"></iconify-icon>
+                <div className='Purchase_c2'>
+                    <iconify-icon className='icon_header' icon="ic:baseline-search"></iconify-icon>
+                    <iconify-icon className='icon_header' icon="et:profile-female"></iconify-icon>
+                    <iconify-icon className='icon_header' icon="fe:random"></iconify-icon>
+                    <a href='#'>
+                        <iconify-icon className='icon_header' icon="mdi:cards-heart-outline"></iconify-icon>
+                    </a>
+                    <div className='number_cart' style={{
+                        top: '10px',
+                        left: '52%',
+                    }}>
+                        0
+                    </div>
+                    <a href='#'>
+                        <iconify-icon className='icon_header' icon="ph:shopping-bag"></iconify-icon>
+                    </a>
+                    <div className='number_cart' style={{
+                        top: '10px',
+                        left: '72%',
+                    }}>
+                        0
+                    </div>
+                    <div className='number_cart' style={{
+                        top: '10px',
+                        left: '92%',
+                    }}>
+                        0
+                    </div>
                 </div>
             </div>
 
-            <div>
+            {/* <div>
                 <div style={{ width: '100px' }}>
                     defalts
                     <select>
@@ -85,7 +103,7 @@ export default function Header2({ scrol }) {
                 <div>
 
                 </div>
-            </div>
+            </div> */}
 
             {/* <iconify-icon icon="et:profile-female"></iconify-icon> */}
 

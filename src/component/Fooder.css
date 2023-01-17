@@ -1,0 +1,34 @@
+.body_foo {
+    width: 100%;
+    /* margin: auto; */
+    background-color: #e5e5e9;
+    /* background-color: #f3f4f6; */
+
+    padding-top: 10px;
+}
+
+.foo_c1 {
+    width: 71%;
+    margin: auto;
+    margin-top: 40px;
+
+    /* border: solid 1px black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    font-size: 14px;
+
+
+    /* color: gray; */
+}
+
+.foo_li {
+    width: 112%;
+
+}
+
+.foo_ul {
+    display: flex;
+    flex-direction: column;
+}
