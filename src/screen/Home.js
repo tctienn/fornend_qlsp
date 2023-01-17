@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getProducts } from '../Axiot/api'
 import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
 import { products } from '../data/data'
+import { store } from '../Redux/Store'
 
-export default function Home() {
+function Home({ states }) {
 
 
     // const output = document.querySelector("#output");
@@ -59,7 +60,13 @@ export default function Home() {
     const navigation = useNavigate()
 
     const onclickproduct = (id) => {
-        navigation(`/product/1`)
+        navigation(`/product/${id}`)
+    }
+
+    const onclick_wish = (item) => {
+        const dis = { type: 'add_wishlish', id: item.id, data: item }
+        store.dispatch(dis)
+        // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
     return (
         <div style={{
@@ -227,15 +234,15 @@ export default function Home() {
 
                 <div className='products'>
                     {products.map((e, ii) =>
-                        <div key={ii} className='product' onClick={() => onclickproduct(e.id)}>
+                        <div key={ii} className='product' >
                             <div className='mini_add'>
                                 new
                             </div>
                             <div className='img_product2'>
-                                <img className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
+                                <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
                                     <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
-                                        <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                        <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                     </div>
                                     <div className='hide_mini2'>
                                         buy now
@@ -245,7 +252,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <img className='img_product' style={{ width: '100%', height: '80%' }} src={e.img1} />
+                            <img onClick={() => onclickproduct(e.id)} className='img_product' style={{ width: '100%', height: '80%' }} src={e.img1} />
 
                             <div className='str_product'>
                                 {e.name}
@@ -737,3 +744,12 @@ export default function Home() {
         </div >
     )
 }
+
+const mapStateToProps = state => {
+    const states = state;
+    // todo: state.counter;
+    console.log('test', states)
+    return { states }
+};
+
+export default connect(mapStateToProps)(Home);

@@ -546,4 +546,92 @@ li {
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  background-color: #f7f7f7;
+  height: 90px;
+
+  justify-content: center;
+}
+
+.list-group-item.active {
+  background-color: white;
+  color: black;
+  border: none;
+  border-bottom: solid 1px black;
+}
+
+.swipe {
+  /* overflow: auto; */
+  /* display: flex; */
+  /* white-space: nowrap; */
+  /* padding-left: 10px; */
+
+  overflow: hidden;
+  display: flex;
+
+}
+
+.muntil_img_slide {
+  width: 24%;
+  aspect-ratio: 2/2;
+  margin: 4px;
+
+  /* position: relative; */
+  /* left: 0; */
+
+  margin-left: 0;
+  transition: margin-left 1s;
+
+}
+
+.button_slide {
+
+  border: none;
+
+  position: relative;
+  top: 11%;
+
+}
+
+.zoom {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+
+}
+
+.img_zoom {
+
+  width: 24%;
+  margin-top: 5%;
+  /* margin-left: 40%; */
+}
+
+.no_wishlish {
+  aspect-ratio: 45/8;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.body_lish_item {
+  /* display: flex; */
+  width: 52%;
+  margin: auto;
+
+}
+
+
+.th_panding {
+  padding: 21px 45px 22px 5px;
+
+  font-size: 10px;
 }

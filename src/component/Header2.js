@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header2.css'
 
-export default function Header2({ scrol }) {
+function Header2({ scrol, states }) {
 
 
+    const navigate = useNavigate();
+
+    const click_wish = () => {
+        navigate('/wishlish')
+    }
 
     return (
         <div className={scrol <= 10 ? 'border' : 'border2'}>
@@ -29,11 +36,13 @@ export default function Header2({ scrol }) {
                         Home
                     </div>
                 </div>
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        Shop
+                <Link to={'/'} style={{ color: 'none', textDecoration: 'none' }}>
+                    <div style={{ width: '100px' }}>
+                        <div className='line'>
+                            Shop
+                        </div>
                     </div>
-                </div>
+                </Link>
 
                 <div style={{ width: '100px' }}>
                     <div className='line'>
@@ -62,9 +71,9 @@ export default function Header2({ scrol }) {
                     <iconify-icon className='icon_header' icon="ic:baseline-search"></iconify-icon>
                     <iconify-icon className='icon_header' icon="et:profile-female"></iconify-icon>
                     <iconify-icon className='icon_header' icon="fe:random"></iconify-icon>
-                    <a href='#'>
-                        <iconify-icon className='icon_header' icon="mdi:cards-heart-outline"></iconify-icon>
-                    </a>
+
+                    <iconify-icon onClick={() => click_wish()} className='icon_header' icon="mdi:cards-heart-outline"></iconify-icon>
+
                     <div className='number_cart' style={{
                         top: '10px',
                         left: '52%',
@@ -78,7 +87,7 @@ export default function Header2({ scrol }) {
                         top: '10px',
                         left: '72%',
                     }}>
-                        0
+                        {states.wishlish.length}
                     </div>
                     <div className='number_cart' style={{
                         top: '10px',
@@ -114,3 +123,13 @@ export default function Header2({ scrol }) {
         </div >
     )
 }
+
+
+const mapStateToProps = state => {
+    const states = state;
+    // todo: state.counter;
+    console.log('test', states)
+    return { states }
+};
+
+export default connect(mapStateToProps)(Header2);

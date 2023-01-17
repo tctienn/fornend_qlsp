@@ -11,6 +11,7 @@ import DemoRedux from './screen/DemoRedux';
 import Home from './screen/Home';
 import Products from './screen/Products';
 import Product from './screen/Product';
+import Wishlish from './screen/Wishlish';
 
 
 export default function Appcompo() {
@@ -30,6 +31,8 @@ export default function Appcompo() {
 
                 <Route path='/' exact element={<Home />} />
                 <Route path='/product/:id' element={<Product />} />
+                <Route path='/wishlish' element={<Wishlish />} />
+
 
                 {/* <Route path='/' element={< Products />} /> */}
 
