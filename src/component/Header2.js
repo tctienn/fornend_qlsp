@@ -12,6 +12,9 @@ function Header2({ scrol, states }) {
         navigate('/wishlish')
     }
 
+    const click_cart = () => {
+        navigate('/cart')
+    }
     return (
         <div className={scrol <= 10 ? 'border' : 'border2'}>
             <img src='https://reactdemo.hasthemes.com/flone/p2/img/logo/flone-black.png' style={{
@@ -80,9 +83,9 @@ function Header2({ scrol, states }) {
                     }}>
                         0
                     </div>
-                    <a href='#'>
-                        <iconify-icon className='icon_header' icon="ph:shopping-bag"></iconify-icon>
-                    </a>
+
+                    <iconify-icon onClick={() => click_cart()} className='icon_header' icon="ph:shopping-bag"></iconify-icon>
+
                     <div className='number_cart' style={{
                         top: '10px',
                         left: '72%',
@@ -93,7 +96,7 @@ function Header2({ scrol, states }) {
                         top: '10px',
                         left: '92%',
                     }}>
-                        0
+                        {states.cart.length}
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@
 const initialState = {
     counter: 0,
     wishlish: [],
-    cart: 0,
+    cart: [],
 };
 
 const ReduxF = (state = initialState, action) => {
@@ -78,6 +78,32 @@ const ReduxF = (state = initialState, action) => {
             let ay = state.wishlish
             ay = ay.filter(e => e.id != action.id)
             return { ...state, wishlish: ay }
+
+        case ('add_cart'):
+            let check2 = false
+            const aa = state.cart;
+            if (aa.length > 0) {
+                // a.map(e => e.id == action.id ? e.soluong++ : e)
+                for (let ii = 0; ii < aa.length; ii++) {
+                    if (aa[ii].id == action.id) {
+                        aa[ii].soluong++
+                        check2 = true
+                        break
+                    }
+                }
+            }
+
+            if (check2 == false)
+                aa.push({ id: action.id, soluong: 1, data: action.data })
+            return {
+                ...state,
+                cart: aa
+            };
+        case ('delete_cart'):
+            let ay2 = state.cart
+            ay2 = ay2.filter(e => e.id != action.id)
+            return { ...state, cart: ay2 }
+
         default:
             return state
     }

@@ -12,6 +12,7 @@ import Home from './screen/Home';
 import Products from './screen/Products';
 import Product from './screen/Product';
 import Wishlish from './screen/Wishlish';
+import Cart from './screen/Cart';
 
 
 export default function Appcompo() {
@@ -31,6 +32,7 @@ export default function Appcompo() {
 
                 <Route path='/' exact element={<Home />} />
                 <Route path='/product/:id' element={<Product />} />
+                <Route path='/cart' element={<Cart />} />
                 <Route path='/wishlish' element={<Wishlish />} />
 
 

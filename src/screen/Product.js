@@ -70,6 +70,11 @@ function Product({ states }) {
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
 
+    const addcart = (item) => {
+        const discart = { type: 'add_cart', id: id, data: item }
+        store.dispatch(discart)
+
+    }
 
 
     return (
@@ -158,7 +163,7 @@ function Product({ states }) {
                                     alignItems: 'center',
                                 }}>
                                     <input type='number' name='soluong' style={{ width: '20%' }} value={states.wishlish.find(e => e.id == id)?.soluong} />
-                                    <button>OUT OF STOCK</button>
+                                    <button onClick={() => addcart(data)}>add to cart</button>
                                     <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray' }}></iconify-icon>
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                 </div>
