@@ -635,3 +635,12 @@ li {
 
   font-size: 10px;
 }
+
+.button_number {
+  border: none;
+}
+
+.input_number {
+  width: 25%;
+  border: none;
+}

@@ -100,8 +100,28 @@ const ReduxF = (state = initialState, action) => {
                 cart: aa
             };
         case ('delete_cart'):
-            let ay2 = state.cart
+            var ay2 = state.cart
             ay2 = ay2.filter(e => e.id != action.id)
+            return { ...state, cart: ay2 }
+
+        case ('tang_cart'):
+            var ay2 = state.cart
+            for (let ii = 0; ii < ay2.length; ii++) {
+                if (ay2[ii].id == action.id) {
+                    ay2[ii].soluong++
+                    break
+                }
+            }
+            return { ...state, cart: ay2 }
+
+        case ('giam_cart'):
+            var ay2 = state.cart
+            for (let ii = 0; ii < ay2.length; ii++) {
+                if (ay2[ii].id == action.id) {
+                    ay2[ii].soluong--
+                    break
+                }
+            }
             return { ...state, cart: ay2 }
 
         default:

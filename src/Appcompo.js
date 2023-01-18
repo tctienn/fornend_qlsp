@@ -13,6 +13,7 @@ import Products from './screen/Products';
 import Product from './screen/Product';
 import Wishlish from './screen/Wishlish';
 import Cart from './screen/Cart';
+import Collection from './screen/Collection';
 
 
 export default function Appcompo() {
@@ -34,6 +35,7 @@ export default function Appcompo() {
                 <Route path='/product/:id' element={<Product />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/wishlish' element={<Wishlish />} />
+                <Route path='/collection' element={<Collection />} />
 
 
                 {/* <Route path='/' element={< Products />} /> */}

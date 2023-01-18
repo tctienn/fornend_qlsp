@@ -7,6 +7,7 @@ import Header from '../component/Header'
 import { products } from '../data/data'
 import { store } from '../Redux/Store'
 // import { set } from 'immer/dist/internal'
+// import { set } from 'immer/dist/internal'
 
 function Cart({ states }) {
 
@@ -39,8 +40,17 @@ function Cart({ states }) {
 
 
 
+    const click_input_t = (id) => {
 
+        store.dispatch({ type: 'tang_cart', id: id.id })
 
+    }
+
+    const click_input_g = (id) => {
+
+        store.dispatch({ type: 'giam_cart', id: id.id })
+
+    }
 
 
     return (
@@ -77,6 +87,9 @@ function Cart({ states }) {
                             your lish item
                             <table width='100%'>
                                 <tr style={{ backgroundColor: '#f9f9f9' }} >
+
+
+
                                     <th className='th_panding'>
                                         IMAGE
                                     </th>
@@ -87,14 +100,17 @@ function Cart({ states }) {
                                         UNIT PRICE
                                     </th>
                                     <th className='th_panding'>
-                                        ADD TO CART
+                                        QTY
+                                    </th>
+                                    <th className='th_panding'>
+                                        SUBTOTAL
                                     </th>
                                     <th className='th_panding'>
                                         ACTION
                                     </th>
                                 </tr>
                                 {states.cart.map((e, i) =>
-                                    <tr>
+                                    <tr key={i}>
                                         <td>
                                             <img style={{
                                                 width: '76px',
@@ -109,7 +125,19 @@ function Cart({ states }) {
                                             {e.data.gia}
                                         </td>
                                         <td>
-                                            hết hàng ?
+                                            <div>
+                                                <button className='button_number' name='ay' onClick={() => click_input_t(e)}>
+                                                    <iconify-icon icon="ic:twotone-plus" style={{ color: 'gray' }}></iconify-icon>
+                                                </button>
+                                                <input className='input_number' name='input_number' value={e.soluong} type='text' />
+                                                <button onClick={() => click_input_g(e)} name='-' className='button_number'>
+                                                    <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray' }}></iconify-icon>
+                                                </button>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {e.data.gia}
                                         </td>
                                         <td>
                                             <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
@@ -118,7 +146,18 @@ function Cart({ states }) {
                                 )}
 
                             </table>
+                            <br />
+                            <div style={{ display: 'flex', justifyContent: 'space-between', }} >
+                                <div className='buttoncart'>
+                                    CONTINUE SHOPPING
+                                </div>
+                                <div className='buttoncart'>
+                                    CLEAR SHOPPING CART
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>}
                 <Fooder />
             </div >

@@ -47,11 +47,13 @@ function Header2({ scrol, states }) {
                     </div>
                 </Link>
 
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        Collecttion
+                <Link to={'/collection'} style={{ color: 'none', textDecoration: 'none' }}>
+                    <div style={{ width: '100px' }}>
+                        <div className='line'>
+                            Collecttion
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
                         pages
