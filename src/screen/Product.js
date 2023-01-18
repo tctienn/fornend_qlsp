@@ -65,13 +65,13 @@ function Product({ states }) {
     }
 
     const addwish = (item) => {
-        const dis = { type: 'add_wishlish', id: id, data: item }
+        const dis = { type: 'add_wishlish', id: Number(id), data: item }
         store.dispatch(dis)
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
 
     const addcart = (item) => {
-        const discart = { type: 'add_cart', id: id, data: item }
+        const discart = { type: 'add_cart', id: Number(id), data: item }
         store.dispatch(discart)
 
     }
@@ -162,7 +162,10 @@ function Product({ states }) {
                                     width: '55%',
                                     alignItems: 'center',
                                 }}>
-                                    <input type='number' name='soluong' style={{ width: '20%' }} value={states.wishlish.find(e => e.id == id)?.soluong} />
+                                    {/* <input type='number' name='soluong' style={{ width: '20%' }} value={states.wishlish.find(e => e.id == id)?.soluong} /> */}
+                                    <div>
+                                        {states.wishlish.find(e => e.id == id)?.soluong}
+                                    </div>
                                     <button onClick={() => addcart(data)}>add to cart</button>
                                     <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray' }}></iconify-icon>
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>

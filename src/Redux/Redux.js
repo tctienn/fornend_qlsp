@@ -41,6 +41,9 @@ const initialState = {
     cart: [],
 };
 
+///thunk
+// const applyMiddleware = ReduxF .applyMiddleware
+
 const ReduxF = (state = initialState, action) => {
     switch (action.type) {
         case ('INCREMENT_COUNTER'):
@@ -124,6 +127,9 @@ const ReduxF = (state = initialState, action) => {
             }
             return { ...state, cart: ay2 }
 
+        case ('clear_cart'):
+            var ay2 = []
+            return { ...state, cart: ay2 }
         default:
             return state
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Fooder from '../component/Fooder'
 import Header2 from '../component/Header2'
 import Header from '../component/Header'
@@ -52,6 +52,9 @@ function Cart({ states }) {
 
     }
 
+    const onclick_clear_cart = () => {
+        store.dispatch({ type: 'clear_cart' })
+    }
 
     return (
         <div>
@@ -76,9 +79,11 @@ function Cart({ states }) {
                         <div className='no_wishlish'>
                             <iconify-icon icon="bi:heart" style={{ color: 'black' }} width="80"></iconify-icon>
                             No items found in cart
-                            <button>
-                                add all item
-                            </button>
+                            <Link to={'/'}>
+                                <button>
+                                    add item
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     :
@@ -86,82 +91,193 @@ function Cart({ states }) {
                         <div className='body_lish_item'>
                             your lish item
                             <table width='100%'>
-                                <tr style={{ backgroundColor: '#f9f9f9' }} >
+                                <tbody>
+                                    <tr style={{ backgroundColor: '#f9f9f9' }} >
 
 
 
-                                    <th className='th_panding'>
-                                        IMAGE
-                                    </th>
-                                    <th className='th_panding'>
-                                        PRODUCT NAME
-                                    </th>
-                                    <th className='th_panding'>
-                                        UNIT PRICE
-                                    </th>
-                                    <th className='th_panding'>
-                                        QTY
-                                    </th>
-                                    <th className='th_panding'>
-                                        SUBTOTAL
-                                    </th>
-                                    <th className='th_panding'>
-                                        ACTION
-                                    </th>
-                                </tr>
-                                {states.cart.map((e, i) =>
-                                    <tr key={i}>
-                                        <td>
-                                            <img style={{
-                                                width: '76px',
-                                                aspectRatio: '2/2',
-                                                margin: '7px',
-                                            }} src={e.data.img1} />
-                                        </td>
-                                        <td>
-                                            {e.data.name}
-                                        </td>
-                                        <td>
-                                            {e.data.gia}
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <button className='button_number' name='ay' onClick={() => click_input_t(e)}>
-                                                    <iconify-icon icon="ic:twotone-plus" style={{ color: 'gray' }}></iconify-icon>
-                                                </button>
-                                                <input className='input_number' name='input_number' value={e.soluong} type='text' />
-                                                <button onClick={() => click_input_g(e)} name='-' className='button_number'>
-                                                    <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray' }}></iconify-icon>
-                                                </button>
-
-                                            </div>
-                                        </td>
-                                        <td>
-                                            {e.data.gia}
-                                        </td>
-                                        <td>
-                                            <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
-                                        </td>
+                                        <th className='th_panding'>
+                                            IMAGE
+                                        </th>
+                                        <th className='th_panding'>
+                                            PRODUCT NAME
+                                        </th>
+                                        <th className='th_panding'>
+                                            UNIT PRICE
+                                        </th>
+                                        <th className='th_panding'>
+                                            QTY
+                                        </th>
+                                        <th className='th_panding'>
+                                            SUBTOTAL
+                                        </th>
+                                        <th className='th_panding'>
+                                            ACTION
+                                        </th>
                                     </tr>
-                                )}
+                                    {states.cart.map((e, i) =>
+                                        <tr key={i}>
+                                            <td>
+                                                <img style={{
+                                                    width: '76px',
+                                                    aspectRatio: '2/2',
+                                                    margin: '7px',
+                                                }} src={e.data.img1} />
+                                            </td>
+                                            <td>
+                                                {e.data.name}
+                                            </td>
+                                            <td>
+                                                €{e.data.gia}
+                                            </td>
+                                            <td>
+                                                <div style={{ display: 'flex' }}>
+                                                    <button className='button_number' name='ay' onClick={() => click_input_t(e)}>
+                                                        <iconify-icon icon="ic:twotone-plus" style={{ color: 'gray' }}></iconify-icon>
+                                                    </button>
+                                                    <div>{e.soluong}</div>
+                                                    <button onClick={() => click_input_g(e)} name='-' className='button_number'>
+                                                        <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray' }}></iconify-icon>
+                                                    </button>
 
+                                                </div>
+                                            </td>
+                                            <td>
+                                                €{e.data.gia * e.soluong}
+                                            </td>
+                                            <td>
+                                                <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
                             </table>
                             <br />
                             <div style={{ display: 'flex', justifyContent: 'space-between', }} >
                                 <div className='buttoncart'>
                                     CONTINUE SHOPPING
                                 </div>
-                                <div className='buttoncart'>
+                                <div onClick={onclick_clear_cart} className='buttoncart'>
                                     CLEAR SHOPPING CART
                                 </div>
                             </div>
+
+                            <br />
+
+
+
+                        </div>
+
+                        <div style={{ display: 'flex', width: '70%', margin: 'auto', justifyContent: 'space-between', }} >
+                            <div className='cart_c'>
+                                <h4 style={{ width: '80%' }}>
+                                    Estimate Shipping And Tax
+                                </h4>
+
+                                <p style={{ width: '80%' }}>
+                                    Enter your destination to get a shipping estimate.
+                                </p>
+                                <label style={{ width: '80%' }}>
+                                    * Country
+                                </label>
+                                <select className="form-select btn" style={{ textAlign: 'start', }} aria-label="Default select example">
+                                    <option value="1">Bangladesh</option>
+                                    <option value="1">Albania</option>
+                                    <option value="2">Slsnd Islands</option>
+                                    <option value="3">Afghanistan</option>
+                                    <option value="4">Belgum</option>
+                                </select>
+                                <br />
+                                <label style={{ width: '80%' }}>
+                                    Region / State
+                                </label>
+                                <br />
+                                <select className="form-select btn" style={{ textAlign: 'start' }} aria-label="Default select example">
+                                    <option value="1">Bangladesh</option>
+                                    <option value="1">Albania</option>
+                                    <option value="2">Slsnd Islands</option>
+                                    <option value="3">Afghanistan</option>
+                                    <option value="4">Belgum</option>
+                                </select>
+                                <br />
+                                <label style={{ width: '80%' }}>
+                                    * Zip/Postal Code
+
+                                </label>
+                                <input style={{ width: '80%' }} type='text' />
+                                <br />
+                                <button className='button_cart_c'>
+                                    GET A QUOTE
+                                </button>
+
+                            </div>
+
+                            <div className='cart_c' style={{ height: '206px' }}>
+                                <h4 style={{ width: '80%' }}>
+                                    Use Coupon Code
+                                </h4>
+
+                                <label style={{ width: '80%' }}>
+                                    Enter your coupon code if you have one
+                                </label>
+                                <input style={{ width: '80%' }} type='text' />
+                                <br />
+                                <button className='button_cart_c'>
+                                    APPLY COUPON
+                                </button>
+
+                            </div>
+
+                            <div className='cart_c' style={{ height: '206px' }}>
+                                <h4 style={{ width: '80%' }}>
+                                    Cart Total
+                                </h4>
+
+                                <label style={{ width: '80%', position: 'relative' }}>
+                                    Total products
+                                    <div style={{ position: 'absolute', right: '0', top: '0' }}>
+                                        €{states.cart?.reduce(
+                                            (accumulator, currentValue) => accumulator + (currentValue.data.gia * currentValue.soluong),
+                                            0
+                                        )
+                                        }
+                                    </div>
+
+                                </label>
+                                <br />
+                                <label style={{ width: '80%', position: 'relative' }}>
+                                    <b style={{ color: '#a749ff' }}>
+                                        Total products
+                                        <div style={{ position: 'absolute', right: '0', top: '0' }}>
+                                            €{states.cart?.reduce(
+                                                (accumulator, currentValue) => accumulator + (currentValue.data.gia * currentValue.soluong),
+                                                0
+                                            )
+                                            }
+                                        </div>
+                                    </b>
+
+                                </label>
+
+                                <br />
+                                <button className='button_cart_c' style={{ width: '53%' }}>
+                                    PROCEED TO CHECKOUT
+                                </button>
+
+                            </div>
+
                         </div>
 
 
+
+
+
+
                     </div>}
+                <br />
                 <Fooder />
             </div >
-        </div>
+        </div >
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Fooder from '../component/Fooder'
 import Header2 from '../component/Header2'
 import Header from '../component/Header'
@@ -38,6 +38,10 @@ function Wishlish({ states }) {
     }
 
 
+    const add_cart = (e) => {
+        console.log(e)
+        store.dispatch({ type: 'add_cart', id: e.id, data: e.data })
+    }
 
 
 
@@ -66,9 +70,11 @@ function Wishlish({ states }) {
                         <div className='no_wishlish'>
                             <iconify-icon icon="bi:heart" style={{ color: 'black' }} width="80"></iconify-icon>
                             No items found in wishlist
-                            <button>
-                                add all item
-                            </button>
+                            <Link to={'/'}>
+                                <button>
+                                    add item
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     :
@@ -76,47 +82,48 @@ function Wishlish({ states }) {
                         <div className='body_lish_item'>
                             your lish item
                             <table width='100%'>
-                                <tr style={{ backgroundColor: '#f9f9f9' }} >
-                                    <th className='th_panding'>
-                                        IMAGE
-                                    </th>
-                                    <th className='th_panding'>
-                                        PRODUCT NAME
-                                    </th>
-                                    <th className='th_panding'>
-                                        UNIT PRICE
-                                    </th>
-                                    <th className='th_panding'>
-                                        ADD TO CART
-                                    </th>
-                                    <th className='th_panding'>
-                                        ACTION
-                                    </th>
-                                </tr>
-                                {states.wishlish.map((e, i) =>
-                                    <tr>
-                                        <td>
-                                            <img style={{
-                                                width: '76px',
-                                                aspectRatio: '2/2',
-                                                margin: '7px',
-                                            }} src={e.data.img1} />
-                                        </td>
-                                        <td>
-                                            {e.data.name}
-                                        </td>
-                                        <td>
-                                            {e.data.gia}
-                                        </td>
-                                        <td>
-                                            hết hàng ?
-                                        </td>
-                                        <td>
-                                            <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
-                                        </td>
+                                <tbody>
+                                    <tr style={{ backgroundColor: '#f9f9f9' }} >
+                                        <th className='th_panding'>
+                                            IMAGE
+                                        </th>
+                                        <th className='th_panding'>
+                                            PRODUCT NAME
+                                        </th>
+                                        <th className='th_panding'>
+                                            UNIT PRICE
+                                        </th>
+                                        <th className='th_panding'>
+                                            ADD TO CART
+                                        </th>
+                                        <th className='th_panding'>
+                                            ACTION
+                                        </th>
                                     </tr>
-                                )}
-
+                                    {states.wishlish.map((e, i) =>
+                                        <tr key={i}>
+                                            <td>
+                                                <img style={{
+                                                    width: '76px',
+                                                    aspectRatio: '2/2',
+                                                    margin: '7px',
+                                                }} src={e.data.img1} />
+                                            </td>
+                                            <td>
+                                                {e.data.name}
+                                            </td>
+                                            <td>
+                                                {e.data.gia}
+                                            </td>
+                                            <td>
+                                                <button type="button" className="btn btn-dark" onClick={() => add_cart(e)}>add to cart</button>
+                                            </td>
+                                            <td>
+                                                <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
                             </table>
                         </div>
                     </div>}

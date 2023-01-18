@@ -10,5 +10,7 @@
 import { createStore } from "redux";
 import ReduxF from './Redux'
 
+import thunk from "redux-thunk";
+
 export const store = createStore(ReduxF);
 
