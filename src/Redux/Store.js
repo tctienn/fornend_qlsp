@@ -11,6 +11,8 @@ import { createStore } from "redux";
 import ReduxF from './Redux'
 
 import thunk from "redux-thunk";
+import { applyMiddleware } from "redux";
 
-export const store = createStore(ReduxF);
+export const store = createStore(ReduxF, applyMiddleware(thunk));
+
 

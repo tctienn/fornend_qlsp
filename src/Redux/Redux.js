@@ -2,6 +2,8 @@
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { api } from "../Axiot/api";
 
+import { getProducts } from "../Axiot/api";
+
 // const data = {
 //     value: 1,
 // }
@@ -43,6 +45,15 @@ const initialState = {
 
 ///thunk
 // const applyMiddleware = ReduxF .applyMiddleware
+
+export const frech_thunk = () => async (dispatch) => {
+    const res = await getProducts();
+
+    // console.log('ay', res.data)
+    dispatch({ type: 'get_products', products: res.data })
+
+}
+
 
 const ReduxF = (state = initialState, action) => {
     switch (action.type) {
@@ -130,6 +141,11 @@ const ReduxF = (state = initialState, action) => {
         case ('clear_cart'):
             var ay2 = []
             return { ...state, cart: ay2 }
+
+
+        case ('get_products'):
+            console.log('ui', action.products)
+            return { ...state, products: action.products }
         default:
             return state
     }

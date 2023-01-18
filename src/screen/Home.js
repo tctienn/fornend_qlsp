@@ -6,6 +6,7 @@ import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
 import { products } from '../data/data'
+import { frech_thunk } from '../Redux/Redux'
 import { store } from '../Redux/Store'
 
 function Home({ states }) {
@@ -68,6 +69,11 @@ function Home({ states }) {
         store.dispatch(dis)
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
+
+    const get_products = () => {
+        store.dispatch(frech_thunk())
+
+    }
     return (
         <div style={{
             display: 'flex',
@@ -87,7 +93,9 @@ function Home({ states }) {
 
             }}>
                 <Header2 scrol={as} />
-
+                {/* <div onClick={get_products}>
+                    ay
+                </div> */}
                 <div className='slide'>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
