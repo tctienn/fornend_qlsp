@@ -6,7 +6,7 @@ import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
 import { products } from '../data/data'
-import { frech_thunk, get_tag_men } from '../Redux/Funtion_thunk'
+import { frech_thunk, get_tag } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
 function Home({ states }) {
@@ -74,7 +74,7 @@ function Home({ states }) {
     }
 
     const get_products = () => {
-        store.dispatch(get_tag_men())
+        store.dispatch(get_tag())
 
     }
     return (

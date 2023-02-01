@@ -148,10 +148,22 @@ const ReduxF = (state = initialState, action) => {
             return { ...state, products: action.products }
 
         case ('get_products_tag_men'):  //lọc tất các trường hợp
-            console.log('ui', action.products)
+            // console.log('ui', action.products)
+
+            return { ...state, products: action.products }
+
+        case ('get_product_color'):
+            return { ...state, products: action.products }
+
+        case ('get_product_size'):
+            return { ...state, products: action.products }
+
+        case ('sx_price'):
+
             return { ...state, products: action.products }
 
         case ('search'):
+
             return { ...state, products: action.products }
 
         default:

@@ -758,3 +758,13 @@ li {
   background-color: purple;
   color: white;
 }
+
+.no-outline {
+  border: none;
+  width: 72%;
+}
+
+.no-outline:focus {
+  outline: none;
+
+}
