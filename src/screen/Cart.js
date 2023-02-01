@@ -284,7 +284,7 @@ function Cart({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    console.log('test', states)
+    // console.log('test', states)
     return { states }
 };
 

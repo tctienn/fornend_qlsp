@@ -69,6 +69,7 @@ export const products = [
         start: 4,
         img1: 'https://flone.jamstacktemplates.dev/assets/img/product/fashion/1.jpg',
         img2: 'https://flone.jamstacktemplates.dev/assets/img/product/fashion/3.jpg',
+        data: []
 
     },
 

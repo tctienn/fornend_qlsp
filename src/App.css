@@ -231,7 +231,7 @@ li {
 
   width: 23%;
 
-  margin-bottom: 10px;
+  margin: 11px 6px;
 
   position: relative;
 }
@@ -323,11 +323,6 @@ li {
 
 }
 
-/* .product:hover .img_product {
-  display: none;
-
-} */
-
 @keyframes img_dow2 {
   0% {
     opacity: 1;
@@ -388,6 +383,44 @@ li {
 .hide_mini3 {
   padding-left: 8px;
 }
+
+
+/* ////////////////////////////////////////// */
+
+
+.product_collection {
+  width: 10%;
+  aspect-ratio: 7/9;
+  /* border: solid 1px black; */
+
+  width: 23%;
+
+  margin-bottom: 10px;
+
+  position: relative;
+}
+
+.mini_add_collection {
+  position: absolute;
+
+  font-size: 10px;
+  width: 15%;
+  aspect-ratio: 11/6;
+  /* border: solid 1px black; */
+  padding: 1px;
+  right: 10px;
+  top: 10px;
+  border-radius: 4px;
+  padding-left: 8px;
+
+  background-color: #fa6bff;
+
+  color: white;
+
+}
+
+/* /////////////////////////////////////////////// */
+
 
 .hide_mini1 {
   padding-left: 8px;
@@ -693,5 +726,35 @@ li {
 
 .buttoncart:hover {
   background-color: #a749ff;
+  color: white;
+}
+
+#check_icon {
+  display: none;
+}
+
+.button_loc:hover #check_icon {
+  display: block;
+}
+
+.button_loc:hover #icon {
+  display: none;
+}
+
+.button_tag {
+  background-color: #f6f6f6,
+}
+
+.button_tag:hover {
+  background-color: purple;
+  color: white;
+}
+
+#icon2 {
+  display: none;
+}
+
+.button_tag2 {
+  background-color: purple;
   color: white;
 }

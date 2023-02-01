@@ -36,13 +36,19 @@ function Header2({ scrol, states }) {
             }}>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Home
+                        <div style={{ width: '100px' }}>
+                            Home
+                        </div>
+
                     </div>
                 </div>
                 <Link to={'/'} style={{ color: 'none', textDecoration: 'none' }}>
                     <div style={{ width: '100px' }}>
                         <div className='line'>
-                            Shop
+                            <div style={{ width: '100px' }}>
+                                Shop
+                            </div>
+
                         </div>
                     </div>
                 </Link>
@@ -50,23 +56,32 @@ function Header2({ scrol, states }) {
                 <Link to={'/collection'} style={{ color: 'none', textDecoration: 'none' }}>
                     <div style={{ width: '100px' }}>
                         <div className='line'>
-                            Collecttion
+                            <div style={{ width: '100px' }}>
+                                Collecttion
+                            </div>
+
                         </div>
                     </div>
                 </Link>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        pages
+                        <div style={{ width: '100px' }}>
+                            pages
+                        </div>
+
                     </div>
                 </div>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        blog
+                        <div style={{ width: '100px' }}>
+                            blog
+                        </div>
+
                     </div>
                 </div>
                 <div style={{ width: '100px' }}>
                     <div className='line'>
-                        Contact Us
+                        <div style={{ width: '100px' }}>Contact Us</div>
                     </div>
                 </div>
 
@@ -133,7 +148,7 @@ function Header2({ scrol, states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    console.log('test', states)
+    // console.log('test', states)
     return { states }
 };
 

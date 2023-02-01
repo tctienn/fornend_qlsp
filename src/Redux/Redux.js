@@ -46,13 +46,13 @@ const initialState = {
 ///thunk
 // const applyMiddleware = ReduxF .applyMiddleware
 
-export const frech_thunk = () => async (dispatch) => {
-    const res = await getProducts();
+// export const frech_thunk = () => async (dispatch) => {
+//     const res = await getProducts();
 
-    // console.log('ay', res.data)
-    dispatch({ type: 'get_products', products: res.data })
+//     // console.log('ay', res.data)
+//     dispatch({ type: 'get_products', products: res.data })
 
-}
+// }
 
 
 const ReduxF = (state = initialState, action) => {
@@ -144,8 +144,16 @@ const ReduxF = (state = initialState, action) => {
 
 
         case ('get_products'):
+            // console.log('ui', action.products)
+            return { ...state, products: action.products }
+
+        case ('get_products_tag_men'):  //lọc tất các trường hợp
             console.log('ui', action.products)
             return { ...state, products: action.products }
+
+        case ('search'):
+            return { ...state, products: action.products }
+
         default:
             return state
     }

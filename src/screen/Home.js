@@ -6,7 +6,7 @@ import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
 import { products } from '../data/data'
-import { frech_thunk } from '../Redux/Redux'
+import { frech_thunk, get_tag_men } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
 function Home({ states }) {
@@ -43,13 +43,16 @@ function Home({ states }) {
 
     const [data, setData] = useState()
     useEffect(() => {
-        const frech = async () => {
-            const res = await getProducts();
-            setData(res.data)
-            console.log('ay', res.data)
+        // const frech = async () => {
+        //     const res = await getProducts();
+        //     setData(res.data)
+        //     console.log('ay', res.data)
 
-        }
-        frech()
+        // }
+        // frech()
+        store.dispatch(frech_thunk())
+        // setData(states)
+        // console.log('vl', states)
 
         // dispatch(thunk_funtion())
     }, [])
@@ -71,7 +74,7 @@ function Home({ states }) {
     }
 
     const get_products = () => {
-        store.dispatch(frech_thunk())
+        store.dispatch(get_tag_men())
 
     }
     return (
@@ -93,9 +96,16 @@ function Home({ states }) {
 
             }}>
                 <Header2 scrol={as} />
-                {/* <div onClick={get_products}>
+                <div onClick={() => get_products()}>
                     ay
-                </div> */}
+                    {/* {console.log('dam', states.product)} */}
+
+
+
+
+
+
+                </div>
                 <div className='slide'>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
@@ -241,6 +251,8 @@ function Home({ states }) {
                 {/* <marquee behavior='scroll' >Hoc HTML tai VietJack - Vi du cach su dung the marquee.</marquee> */}
 
                 <div className='products'>
+                    {/* {console.log("states: ...", states)}
+                    {states.products ? states.products[1].name : ""} */}
                     {products.map((e, ii) =>
                         <div key={ii} className='product' >
                             <div className='mini_add'>
@@ -250,7 +262,7 @@ function Home({ states }) {
                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
                                     <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
-                                        <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                        <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white', cursor: 'pointer' }}></iconify-icon>
                                     </div>
                                     <div className='hide_mini2'>
                                         buy now
@@ -756,7 +768,7 @@ function Home({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    console.log('test', states)
+    // console.log('test', states)
     return { states }
 };
 

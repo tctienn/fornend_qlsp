@@ -30,6 +30,7 @@ export default function Local() {
         // }
     ]
     localStorage.setItem('foo', JSON.stringify(data)) /// local không nhận mảng nên phải đổi kiểu sang json 
+
     const datas = JSON.parse(localStorage.getItem("foo"))
     return datas
 }
