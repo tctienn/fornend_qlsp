@@ -139,10 +139,12 @@
 } */
 
 
-.icon_header {
+/* .icon_header {
   margin-right: 10px;
   display: none;
-}
+
+  cursor: pointer;
+} */
 
 .number_cart {
   background-color: black;

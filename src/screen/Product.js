@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Fooder from '../component/Fooder'
 import Header2 from '../component/Header2'
 import Header from '../component/Header'
@@ -9,9 +9,9 @@ import { store } from '../Redux/Store'
 // import { set } from 'immer/dist/internal'
 
 function Product({ states }) {
-    let { id } = useParams()
+    let { id } = useParams()  /// id được gửi bằng useparam nếu load lại trang thì sẽ bị mất id có thể thay thế chức năng năng này bằng cách lấy id của url 
     var check = true
-    const data = products.find(e => e.id == id)
+    const data = states.products?.find(e => e.id == id)
 
 
     // const ay = () => {
@@ -104,14 +104,15 @@ function Product({ states }) {
                                     color: 'gray', position: 'absolute',
                                     left: '93%',
                                     top: '10px',
+                                    cursor: 'pointer'
                                 }}></iconify-icon>
                                 {/* ////// zoom img */}
 
                                 <div className='zoom' style={{ display: openzoom == false ? 'none' : 'block' }}>
-                                    <iconify-icon icon="ph:x" onClick={zoom_click} style={{ color: 'gray', position: 'absolute', right: '10%', top: '10px' }}></iconify-icon>
+                                    <iconify-icon icon="ph:x" onClick={zoom_click} style={{ color: 'gray', position: 'absolute', right: '10%', top: '10px', cursor: 'pointer' }}></iconify-icon>
                                     <div style={{ position: 'absolute', right: '20%', top: '2%' }}>
-                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-in-rounded" style={{ color: 'gray' }}></iconify-icon>
-                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-out" style={{ color: 'gray' }}></iconify-icon>
+                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-in-rounded" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
+                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-out" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                                     </div>
                                     <br />
                                     <div style={{ width: '70%', margin: 'auto' }}>
@@ -171,9 +172,17 @@ function Product({ states }) {
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                 </div>
                                 <div>
-                                    Categories:
+                                    Categories : {data.loai?.map(e =>
+                                        <Link key={e} className='Link_name_product' to={'/collection'}>
+                                            {e} ,
+                                        </Link>
+                                    )}
                                     <br />
-                                    tag
+                                    tag : {data.loai?.map(e =>
+                                        <Link key={e} className='Link_name_product' to={'/collection'}>
+                                            {e} ,
+                                        </Link>
+                                    )}
                                 </div>
 
 

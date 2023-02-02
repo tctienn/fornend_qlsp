@@ -17,12 +17,15 @@ function Header2({ scrol, states }) {
     }
     return (
         <div className={scrol <= 10 ? 'border' : 'border2'}>
-            <img src='https://reactdemo.hasthemes.com/flone/p2/img/logo/flone-black.png' style={{
-                // width: '170px',
-                height: '41%',
-                marginLeft: '6.6%',
-                marginTop: '2%'
-            }} />
+            <Link to={'/'}>
+                <img src='https://reactdemo.hasthemes.com/flone/p2/img/logo/flone-black.png' style={{
+                    // width: '170px',
+                    height: '41%',
+                    marginLeft: '6.6%',
+                    marginTop: '2%'
+                }} />
+            </Link>
+
             <div style={{
                 display: 'flex',
                 // flexWrap: 'nowrap',
@@ -92,7 +95,7 @@ function Header2({ scrol, states }) {
                     <iconify-icon className='icon_header' icon="et:profile-female"></iconify-icon>
                     <iconify-icon className='icon_header' icon="fe:random"></iconify-icon>
 
-                    <iconify-icon onClick={() => click_wish()} className='icon_header' icon="mdi:cards-heart-outline"></iconify-icon>
+                    <iconify-icon onClick={() => click_wish()} className='icon_header' style={{ cursor: 'pointer' }} icon="mdi:cards-heart-outline"></iconify-icon>
 
                     <div className='number_cart' style={{
                         top: '10px',
@@ -101,7 +104,7 @@ function Header2({ scrol, states }) {
                         0
                     </div>
 
-                    <iconify-icon onClick={() => click_cart()} className='icon_header' icon="ph:shopping-bag"></iconify-icon>
+                    <iconify-icon onClick={() => click_cart()} className='icon_header' style={{ cursor: 'pointer' }} icon="ph:shopping-bag"></iconify-icon>
 
                     <div className='number_cart' style={{
                         top: '10px',

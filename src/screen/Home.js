@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getProducts } from '../Axiot/api'
 import Fooder from '../component/Fooder'
 import Header from '../component/Header'
 import Header2 from '../component/Header2'
+import Hide_header from '../component/Hide_header'
+import Ontop from '../component/Ontop'
 import { products } from '../data/data'
 import { frech_thunk, get_tag } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
@@ -96,16 +98,9 @@ function Home({ states }) {
 
             }}>
                 <Header2 scrol={as} />
-                <div onClick={() => get_products()}>
-                    ay
-                    {/* {console.log('dam', states.product)} */}
+                <Hide_header scrol={as} />
+                <Ontop scrol={as} />
 
-
-
-
-
-
-                </div>
                 <div className='slide'>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
@@ -275,7 +270,9 @@ function Home({ states }) {
                             <img onClick={() => onclickproduct(e.id)} className='img_product' style={{ width: '100%', height: '80%' }} src={e.img1} />
 
                             <div className='str_product'>
-                                {e.name}
+                                <Link className='Link_name_product' to={`/product/${e.id}`}>
+                                    {e.name}
+                                </Link>
                                 <div>
                                     {i.map(ei => <iconify-icon key={ei} icon="ic:twotone-star-outline" style={{ color: e.start >= ei ? '#ffaa00' : 'gray' }}></iconify-icon>)}
                                 </div>

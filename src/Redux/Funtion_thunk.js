@@ -75,16 +75,25 @@ export const sx_price = (hienthi) => async (dispatch) => {
 
     const res = await getProducts();
     var sx
-    if (hienthi.name == 'Defalt') {
+    if (hienthi == 'Defalt') {
         sx = res.data
     }
 
     // res = res.data.filter(e => e.loai.filter(ee => ee == 'men').length > 0)
 
-    else if (hienthi.name == 'giam') {
-        sx = res.data.sort((a, b) => a.gia - b.gia)
-    }
-    else { sx = res.data.sort((a, b) => b.gia - a.gia) }
+    else {
+        if (hienthi == 'giam') {
 
+            sx = res.data.sort((a, b) => b.gia - a.gia)
+
+        }
+        else {
+            sx = res.data.sort((a, b) => a.gia - b.gia)
+
+        }
+    }
+
+
+    console.log(sx)
     dispatch({ type: 'sx_price', products: sx })
 }
