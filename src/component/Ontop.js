@@ -4,7 +4,7 @@ export default function Ontop({ scrol }) {
     const as = () => {
         const element = document.getElementById("scroller");
         element.scrollLeft = 50;
-        element.scrollTop = 100;
+        element.scrollTop = 0;
     }
     return (
 

@@ -17,12 +17,16 @@ function Header2({ scrol, states }) {
     }
     return (
         <div className={scrol <= 10 ? 'border' : 'border2'}>
-            <Link to={'/'}>
+            <Link to={'/'} style={{
+                // width: '170px',
+                height: '41%',
+                marginLeft: '6.6%',
+                marginTop: '2%'
+            }}>
                 <img src='https://reactdemo.hasthemes.com/flone/p2/img/logo/flone-black.png' style={{
                     // width: '170px',
-                    height: '41%',
-                    marginLeft: '6.6%',
-                    marginTop: '2%'
+                    height: '100%',
+
                 }} />
             </Link>
 
