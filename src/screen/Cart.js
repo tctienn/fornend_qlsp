@@ -73,8 +73,11 @@ function Cart({ states }) {
                 <Header2 scrol={as} />
                 {states.cart?.length == 0 ?
                     <div>
-                        <div className='patch_product'>
-                            HOME / SHOP PRODUCT
+                        <div className='patch_product' style={{
+                            display: 'flex',
+                            flexDirection: 'row'
+                        }}>
+                            <Link to={'/'} className='Link_name_product'>HOME</Link> / SHOP PRODUCT
                         </div>
                         <div className='no_wishlish'>
                             <iconify-icon icon="bi:heart" style={{ color: 'black' }} width="80"></iconify-icon>

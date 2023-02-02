@@ -49,7 +49,7 @@ function Header2({ scrol, states }) {
 
                     </div>
                 </div>
-                <Link to={'/'} style={{ color: 'none', textDecoration: 'none' }}>
+                <Link to={'/'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
                     <div style={{ width: '100px' }}>
                         <div className='line'>
                             <div style={{ width: '100px' }}>
@@ -60,7 +60,7 @@ function Header2({ scrol, states }) {
                     </div>
                 </Link>
 
-                <Link to={'/collection'} style={{ color: 'none', textDecoration: 'none' }}>
+                <Link to={'/collection'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
                     <div style={{ width: '100px' }}>
                         <div className='line'>
                             <div style={{ width: '100px' }}>

@@ -809,3 +809,15 @@ li {
 .Link_name_product:hover {
   color: #a749ff;
 }
+
+#list-home {
+  font-size: 11px;
+}
+
+#list-profile {
+  font-size: 11px;
+}
+
+#list-home-list {
+  /* width: inherit; */
+}

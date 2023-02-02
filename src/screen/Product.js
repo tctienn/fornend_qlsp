@@ -6,6 +6,7 @@ import Header2 from '../component/Header2'
 import Header from '../component/Header'
 import { products } from '../data/data'
 import { store } from '../Redux/Store'
+import Hide_header from '../component/Hide_header'
 // import { set } from 'immer/dist/internal'
 
 function Product({ states }) {
@@ -92,10 +93,15 @@ function Product({ states }) {
                 }}>
 
                 <Header2 scrol={as} />
+                <Hide_header scrol={as} />
+
                 {typeof data == 'undefined' ? <div>không tìm thấy id sản phẩm</div> :
                     <div>
-                        <div className='patch_product'>
-                            HOME / SHOP PRODUCT
+                        <div className='patch_product' style={{
+                            display: 'flex',
+                            flexDirection: 'row'
+                        }}>
+                            <Link to={'/'} className='Link_name_product'>HOME</Link> / SHOP PRODUCT
                         </div>
                         <br /><br />
                         <div style={{ width: '52%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}>
@@ -167,17 +173,18 @@ function Product({ states }) {
                                     <div>
                                         {states.wishlish.find(e => e.id == id)?.soluong}
                                     </div>
-                                    <button onClick={() => addcart(data)}>add to cart</button>
+                                    <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538' }}>add to cart</button>
                                     <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray' }}></iconify-icon>
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                 </div>
+                                <br />
                                 <div>
                                     Categories : {data.loai?.map(e =>
                                         <Link key={e} className='Link_name_product' to={'/collection'}>
                                             {e} ,
                                         </Link>
                                     )}
-                                    <br />
+                                    <br /><br />
                                     tag : {data.loai?.map(e =>
                                         <Link key={e} className='Link_name_product' to={'/collection'}>
                                             {e} ,
@@ -194,9 +201,9 @@ function Product({ states }) {
                         <div style={{ width: '52%', margin: 'auto' }} >
                             <div >
                                 <div style={{ display: 'flex', flexDirection: 'row', width: '74%', justifyContent: 'space-around', margin: 'auto', }} id="list-tab" role="tablist">
-                                    <a className="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Additional Information</a>
-                                    <a className="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Description</a>
-                                    <a className="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Reviews</a>
+                                    <a className="list-group-item list-group-item-action active" style={{ width: 'auto' }} id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Additional Information</a>
+                                    <a className="list-group-item list-group-item-action" style={{ width: 'auto' }} id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Description</a>
+                                    <a className="list-group-item list-group-item-action" style={{ width: 'auto' }} id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Reviews</a>
                                     {/* <a className="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a> */}
                                 </div>
                             </div>
@@ -212,8 +219,89 @@ function Product({ states }) {
                                         <br />
                                         <b>Other Info</b> American heirloom jean shorts pug seitan letterpress
                                     </div>
-                                    <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">.ss..</div>
-                                    <div className="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">..sss.</div>
+                                    <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                                        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+                                        eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
+                                        quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                                        nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+                                        nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone
+                                        who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances
+                                        occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes
+                                        laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who
+                                        chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                    </div>
+                                    <div className="tab-pane fade" id="list-messages" style={{ display: 'flex' }} role="tabpanel" aria-labelledby="list-messages-list">
+                                        <div style={{ width: '60%' }}>
+                                            <div style={{ display: 'flex', fontSize: '10px' }}>
+                                                <img src='https://flone.jamstacktemplates.dev/assets/img/testimonial/1.jpg' style={{ width: '20%', aspectRatio: '2/2' }} />
+                                                <div>
+                                                    <div>
+                                                        White Lewis
+                                                    </div>
+                                                    <div>
+                                                        Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style={{ display: 'flex', fontSize: '10px' }}>
+                                                <img src='https://flone.jamstacktemplates.dev/assets/img/testimonial/1.jpg' style={{ width: '20%', aspectRatio: '2/2' }} />
+                                                <div>
+                                                    <div>
+                                                        White Lewis
+                                                    </div>
+                                                    <div>
+                                                        Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style={{ width: '30%' }}>
+                                            <h6>
+                                                Add a Review
+                                            </h6>
+                                            Your rating:
+                                            <span>
+                                                <iconify-icon icon="material-symbols:star" style={{ color: 'yellow' }}></iconify-icon>
+                                                <iconify-icon icon="material-symbols:star" style={{ color: 'yellow' }}></iconify-icon>
+                                                <iconify-icon icon="material-symbols:star" style={{ color: 'yellow' }}></iconify-icon>
+                                                <iconify-icon icon="material-symbols:star" style={{ color: 'yellow' }}></iconify-icon>
+                                                <iconify-icon icon="material-symbols:star" style={{ color: 'yellow' }}></iconify-icon>
+                                            </span>
+
+                                            <div style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                flexWrap: 'wrap',
+                                                justifyContent: 'space-around',
+                                                alignContent: 'space-around',
+                                                justifyContent: 'space-between',
+                                                aspectRatio: '17/15',
+
+                                            }}>
+                                                <input style={{ width: '48%', border: 'solid 1px #e6e6e6' }} placeholder='name' />
+                                                <input style={{ width: '48%', border: 'solid 1px #e6e6e6' }} placeholder='email' />
+                                                <textarea placeholder='message' style={{ width: '100%', height: '69%', border: 'solid 1px #e6e6e6' }}>
+
+                                                </textarea>
+                                            </div>
+                                            <button style={{
+                                                width: '36%',
+                                                fontSize: '13px',
+                                                border: 'none',
+                                                backgroundColor: '#a749ff',
+                                                color: 'white',
+                                                aspectRatio: '21/7'
+                                            }}>
+                                                gửi
+                                            </button>
+
+
+                                        </div>
+                                    </div>
                                     {/* <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">..ssss.</div> */}
                                 </div>
 
@@ -374,7 +462,7 @@ function Product({ states }) {
                     </div>}
                 <Fooder />
             </div >
-        </div>
+        </div >
     )
 }
 

@@ -256,8 +256,8 @@ function Home({ states }) {
                             <div className='img_product2'>
                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                    <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
-                                        <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white', cursor: 'pointer' }}></iconify-icon>
+                                    <div className='hide_mini1' style={{ width: '12%', height: '100%' }} onClick={() => onclick_wish(e)} >
+                                        <iconify-icon icon="ph:heart" style={{ color: 'white', cursor: 'pointer' }}></iconify-icon>
                                     </div>
                                     <div className='hide_mini2'>
                                         buy now

@@ -211,8 +211,11 @@ function Collection({ states }) {
                 <Hide_header scrol={as} />
                 <Ontop scrol={as} />
 
-                <div id='a' className='patch_product'>
-                    HOME /  SHOP
+                <div className='patch_product' style={{
+                    display: 'flex',
+                    flexDirection: 'row'
+                }}>
+                    <Link to={'/'} className='Link_name_product'>HOME</Link> /  SHOP
                 </div>
 
 
@@ -376,8 +379,8 @@ function Collection({ states }) {
                                             <div className='img_product2'>
                                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                                    <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
-                                                        <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                                    <div className='hide_mini1' onClick={() => onclick_wish(e)} style={{ width: '12%', height: '100%' }}>
+                                                        <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                     </div>
                                                     <div className='hide_mini2'>
                                                         buy now
@@ -422,8 +425,8 @@ function Collection({ states }) {
                                                     <div className='img_product2' style={{ height: '90%' }}>
                                                         <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                                         <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                                            <div className='hide_mini1' style={{ width: '12%', height: '100%' }}>
-                                                                <iconify-icon onClick={() => onclick_wish(e)} icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
+                                                            <div className='hide_mini1' onClick={() => onclick_wish(e)} style={{ width: '12%', height: '100%' }}>
+                                                                <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                             </div>
                                                             <div className='hide_mini2'>
                                                                 buy now
