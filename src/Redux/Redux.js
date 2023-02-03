@@ -4,6 +4,8 @@
 
 import { getProducts } from "../Axiot/api";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // const data = {
 //     value: 1,
 // }
@@ -104,6 +106,7 @@ const ReduxF = (state = initialState, action) => {
                         check2 = true
                         break
                     }
+
                 }
             }
 
@@ -132,8 +135,10 @@ const ReduxF = (state = initialState, action) => {
             var ay2 = state.cart
             for (let ii = 0; ii < ay2.length; ii++) {
                 if (ay2[ii].id == action.id) {
-                    ay2[ii].soluong--
-                    break
+                    if (ay2[ii].soluong > 1) {
+                        ay2[ii].soluong--
+                        break
+                    }
                 }
             }
             return { ...state, cart: ay2 }

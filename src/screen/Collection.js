@@ -12,6 +12,14 @@ import { products } from '../data/data'
 import { frech_thunk, get_product_loai, get_tag, search_product, get_product_color, get_product_size, sx_price } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
+
+
+/// thu viện thông báo
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import 'Reac-toastify/dist/ReactToastify.min.css';
+
+
 function Collection({ states }) {
 
 
@@ -19,16 +27,30 @@ function Collection({ states }) {
 
     const [as, setAs] = useState('')
 
-    useEffect(() => {
-        var scroller = document.querySelector("#scroller");
-        scroller.addEventListener("scroll", (event) => {
-            // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            setAs(scroller.scrollTop)
-            // console.log(scroller.scrollTop)
-        }, []);
+    // useEffect(() => {
+    //     var scroller = document.querySelector("#scroller");
+    //     scroller.addEventListener("scroll", (event) => {
+    //         // output.textContent = `scrollTop: ${scroller.scrollTop}`;
+    //         setAs(scroller.scrollTop)
+    //         // console.log(scroller.scrollTop)
+    //     });
 
+
+
+
+    //     // const scrollElement = document.querySelector("#scroller");
+    //     // var outputDiv = document.querySelector(".output");
+    //     // scrollElement.addEventListener("scroll", () => {
+    //     //     outputDiv.innerHTML = scrollElement.scrollTop;
+    //     //     console.log(scrollElement.scrollTop)
+    //     //     alert()
+    //     // });
+
+    // })
+
+    window.addEventListener('scroll', () => {
+        setAs(window.scrollY)
     })
-
 
     const [data, setData] = useState()
 
@@ -70,11 +92,12 @@ function Collection({ states }) {
         navigation(`/product/${id}`)
     }
 
-    const onclick_wish = (item) => {
-        const dis = { type: 'add_wishlish', id: item.id, data: item }
-        store.dispatch(dis)
-        // store.dispatch({ type: 'INCREMENT_COUNTER' })
-    }
+    // const onclick_wish = (item) => {
+    //     const dis = { type: 'add_wishlish', id: item.id, data: item }
+    //     store.dispatch(dis)
+    //     // store.dispatch({ type: 'INCREMENT_COUNTER' })
+
+    // }
 
     // const tag_men = () => {
     //     store.dispatch(get_tag())
@@ -126,10 +149,14 @@ function Collection({ states }) {
     const [value_select, setValue_select] = useState('')
     const tg = useRef()
     const onchange_select = (value) => {
-        tg.current = value.target.value
-        setValue_select(value.target.value) //// vấn đề bất đồng bộ khiến biến state không được gán chính xác lúc hàm thunk sử dụng
-        store.dispatch(sx_price(tg.current))
-        // alert(tg.current)
+        const dataValue = value.target.value
+        // tg.current = value.target.value
+        setValue_select((prev) => {
+            // alert(value_select)
+
+            return value.target.value
+        }) //// vấn đề bất đồng bộ khiến biến state không được gán chính xác lúc hàm thunk sử dụng
+        store.dispatch(sx_price(dataValue))
     }
 
     /////////////////////// phân trang 
@@ -181,13 +208,57 @@ function Collection({ states }) {
         const dis = { type: 'add_wishlish', id: Number(item.id), data: item }
         store.dispatch(dis)
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
+
+        toast.success('add to wishlish!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     const addcart = (item) => {
         const discart = { type: 'add_cart', id: Number(item.id), data: item }
         store.dispatch(discart)
 
+        toast.success('add to cart!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+
     }
+
+
+
+
+
+    const notify = () => {
+        // console.log(toast("Wow so easy!"))
+        {
+            toast.success('🦄 Wow so easy!', {
+                position: "bottom-left",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        }
+
+    }
+
 
     return (
         <div style={{
@@ -195,13 +266,16 @@ function Collection({ states }) {
             flexFlow: 'column',
             height: '100%'
         }} >
-            <Header />
+            {/* <Header /> */}
+
+            <ToastContainer />
+
 
 
             <div id='scroller' style={{
                 // // border: '3px solid #00ff00',
                 width: '100%',
-                height: '660px',
+                // height: 'max-content',
                 // overflowX: 'hidden',
                 overflowY: 'auto',
                 // backgroundColor: '#f3f4f6'
@@ -231,7 +305,7 @@ function Collection({ states }) {
                 }}>
 
                     <div style={{ width: '28%', padding: '3%' }}>
-                        <h6>
+                        <h6 className='output'>
                             SEARCH
                         </h6>
                         <br />
@@ -379,7 +453,7 @@ function Collection({ states }) {
                                             <div className='img_product2'>
                                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                                    <div className='hide_mini1' onClick={() => onclick_wish(e)} style={{ width: '12%', height: '100%' }}>
+                                                    <div className='hide_mini1' onClick={() => addwish(e)} style={{ width: '12%', height: '100%' }}>
                                                         <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                     </div>
                                                     <div className='hide_mini2'>
@@ -418,14 +492,14 @@ function Collection({ states }) {
                                     action_s.current == 'x2' ?
                                         (
                                             !states.products ? '' : states.products.slice(page_number.current, (page_number.current + 9)).map((e, ii) =>
-                                                <div key={ii} className='product' style={{ width: '45%', height: '362px', margin: '11px 6px' }} >
+                                                <div key={ii} className='product' style={{ width: '45%', margin: '11px 6px' }} >
                                                     <div className='mini_add'>
                                                         new
                                                     </div>
                                                     <div className='img_product2' style={{ height: '90%' }}>
                                                         <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                                         <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                                            <div className='hide_mini1' onClick={() => onclick_wish(e)} style={{ width: '12%', height: '100%' }}>
+                                                            <div className='hide_mini1' onClick={() => addcart(e)} style={{ width: '12%', height: '100%' }}>
                                                                 <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                             </div>
                                                             <div className='hide_mini2'>
@@ -544,6 +618,9 @@ function Collection({ states }) {
 
 
             </div >
+            {/* <iframe src="/" width="680" height="auto" allowFullscreen>
+
+            </iframe> */}
 
         </div >
     )

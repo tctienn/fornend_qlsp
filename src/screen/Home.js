@@ -11,6 +11,9 @@ import { products } from '../data/data'
 import { frech_thunk, get_tag } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Home({ states }) {
 
 
@@ -18,12 +21,16 @@ function Home({ states }) {
 
     const [as, setAs] = useState('')
 
-    useEffect(() => {
-        var scroller = document.querySelector("#scroller");
-        scroller.addEventListener("scroll", (event) => {
-            // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            setAs(scroller.scrollTop)
-        }, [as]);
+    // useEffect(() => {
+    //     var scroller = document.querySelector("#scroller");
+    //     scroller.addEventListener("scroll", (event) => {
+    //         // output.textContent = `scrollTop: ${scroller.scrollTop}`;
+    //         setAs(scroller.scrollTop)
+    //     }, [as]);
+    // })
+
+    window.addEventListener('scroll', () => {
+        setAs(window.scrollY)
     })
 
 
@@ -72,26 +79,54 @@ function Home({ states }) {
     const onclick_wish = (item) => {
         const dis = { type: 'add_wishlish', id: item.id, data: item }
         store.dispatch(dis)
+
+        toast.success('add to wishlish!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
 
-    const get_products = () => {
-        store.dispatch(get_tag())
+    // const get_products = () => {
+    //     store.dispatch(get_tag())
+
+    // }
+
+    const addcart = (item) => {
+        const discart = { type: 'add_cart', id: Number(item.id), data: item }
+        store.dispatch(discart)
+        toast.success('add to cart!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
 
     }
+
     return (
         <div style={{
             display: 'flex',
             flexFlow: 'column',
             height: '100%'
         }} >
-            <Header />
-
+            {/* <Header /> */}
+            <ToastContainer />
 
             <div id='scroller' style={{
                 // // border: '3px solid #00ff00',
                 width: '100%',
-                height: '660px',
+                // height: '660px',
                 // overflowX: 'hidden',
                 overflowY: 'auto',
                 // backgroundColor: '#f3f4f6'
@@ -110,13 +145,16 @@ function Home({ states }) {
                                     <div>
                                         <div>
                                             <b>
-                                                Summer 2024 Offer Collecttion ss
+                                                smart products
                                             </b>
+                                            <h1>
+                                                Summer Offer <br></br> 2024  Collecttion
+                                            </h1>
                                         </div>
 
-                                        <button>
+                                        <div className='button_slide_home'>
                                             Buy now
-                                        </button>
+                                        </div>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-hm1-2.png' className='img_slide' />
                                 </div>
@@ -127,13 +165,16 @@ function Home({ states }) {
                                     <div>
                                         <div>
                                             <b>
-                                                Summer 2024 Offer Collecttion ss
+                                                smart products
                                             </b>
+                                            <h1>
+                                                Summer Offer <br></br> 2024  Collecttion
+                                            </h1>
                                         </div>
 
-                                        <button>
+                                        <div className='button_slide_home'>
                                             Buy now
-                                        </button>
+                                        </div>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
                                 </div>
@@ -144,24 +185,29 @@ function Home({ states }) {
                                     <div>
                                         <div>
                                             <b>
-                                                Summer 2024 Offer Collecttion ss
+                                                smart products
                                             </b>
+                                            <h1>
+                                                Summer Offer <br></br> 2024  Collecttion
+                                            </h1>
                                         </div>
 
-                                        <button>
+                                        <div className='button_slide_home'>
                                             Buy now
-                                        </button>
+                                        </div>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
                                 </div>
                             </div>
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            {/* <span className="carousel-control-prev-icon" aria-hidden="true"></span> */}
+                            <iconify-icon icon="material-symbols:arrow-back-ios-new" style={{ color: 'gray' }} width="50"></iconify-icon>
                             <span className="visually-hidden">Previous</span>
                         </button>
                         <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            {/* <span className="carousel-control-next-icon" aria-hidden="true"></span> */}
+                            <iconify-icon icon="material-symbols:arrow-back-ios-new" style={{ color: 'gray' }} rotate="180deg" width="50"></iconify-icon>
                             <span className="visually-hidden">Next</span>
                         </button>
                     </div>
@@ -256,15 +302,17 @@ function Home({ states }) {
                             <div className='img_product2'>
                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                 <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                    <div className='hide_mini1' style={{ width: '12%', height: '100%' }} onClick={() => onclick_wish(e)} >
+                                    <div className='hide_mini1' onClick={() => onclick_wish(e)} >
                                         <iconify-icon icon="ph:heart" style={{ color: 'white', cursor: 'pointer' }}></iconify-icon>
                                     </div>
-                                    <div className='hide_mini2'>
+                                    <div className='hide_mini2' onClick={() => addcart(e)}>
                                         buy now
                                     </div>
-                                    <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
-                                        <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white', }}></iconify-icon>
-                                    </div>
+                                    <Link to={`/product/${e.id}`} style={{ width: '12%', height: '100%' }}>
+                                        <div className='hide_mini3' style={{ width: '100%', height: '100%' }}>
+                                            <iconify-icon icon="ic:outline-remove-red-eye" style={{ color: 'white' }}></iconify-icon>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                             <img onClick={() => onclickproduct(e.id)} className='img_product' style={{ width: '100%', height: '80%' }} src={e.img1} />
@@ -765,7 +813,7 @@ function Home({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    // console.log('test', states)
+    console.log('test', states.cart)
     return { states }
 };
 

@@ -15,24 +15,13 @@ function Product({ states }) {
     const data = states.products?.find(e => e.id == id)
 
 
-    // const ay = () => {
-    //     const as = typeof data
-    //     if (as === 'undefined')
-    //         check = false
-
-
-
-    // }
-    // console.log(check)
 
     const [as, setAs] = useState('')
-    useEffect(() => {
-        var scroller = document.querySelector("#scroller");
-        scroller.addEventListener("scroll", (event) => {
-            // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            setAs(scroller.scrollTop)
-        }, [as]);
+
+    window.addEventListener('scroll', () => {
+        setAs(window.scrollY)
     })
+
 
     const i = [1, 2, 3, 4, 5]
 
@@ -80,12 +69,12 @@ function Product({ states }) {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',
                     width: '100%',
-                    height: '660px',
+                    // height: '660px',
                     // overflowX: 'hidden',
                     overflowY: 'auto',
                     // backgroundColor: '#f3f4f6'
@@ -220,18 +209,7 @@ function Product({ states }) {
                                         <b>Other Info</b> American heirloom jean shorts pug seitan letterpress
                                     </div>
                                     <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                                        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-                                        eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
-                                        quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-                                        nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-                                        nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone
-                                        who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances
-                                        occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes
-                                        laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who
-                                        chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                        {data.mota}
                                     </div>
                                     <div className="tab-pane fade" id="list-messages" style={{ display: 'flex' }} role="tabpanel" aria-labelledby="list-messages-list">
                                         <div style={{ width: '60%' }}>

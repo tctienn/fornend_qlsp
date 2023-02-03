@@ -6,8 +6,10 @@ import Header2 from '../component/Header2'
 import Header from '../component/Header'
 import { products } from '../data/data'
 import { store } from '../Redux/Store'
-// import { set } from 'immer/dist/internal'
-// import { set } from 'immer/dist/internal'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Cart({ states }) {
 
@@ -33,9 +35,20 @@ function Cart({ states }) {
     })
 
 
-    const delete_on_wish = (id) => {
+    const delete_on_wish = (id, name) => {
         let ay = { type: 'delete_cart', id: id }
         store.dispatch(ay)
+
+        toast.success(' đã xóa sản phẩm : ' + name, {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
 
@@ -58,7 +71,7 @@ function Cart({ states }) {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',
@@ -71,6 +84,7 @@ function Cart({ states }) {
                 }}>
 
                 <Header2 scrol={as} />
+                <ToastContainer />
                 {states.cart?.length == 0 ?
                     <div>
                         <div className='patch_product' style={{
@@ -131,7 +145,7 @@ function Cart({ states }) {
                                                 {e.data.name}
                                             </td>
                                             <td>
-                                                €{e.data.gia}
+                                                €{e.data.gia.toFixed(2)}
                                             </td>
                                             <td>
                                                 <div style={{ display: 'flex' }}>
@@ -146,10 +160,10 @@ function Cart({ states }) {
                                                 </div>
                                             </td>
                                             <td>
-                                                €{e.data.gia * e.soluong}
+                                                €{(e.data.gia * e.soluong).toFixed(2)}
                                             </td>
                                             <td>
-                                                <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
+                                                <iconify-icon onClick={() => delete_on_wish(e.id, e.data.name)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
                                             </td>
                                         </tr>
                                     )}
@@ -239,10 +253,10 @@ function Cart({ states }) {
                                 <label style={{ width: '80%', position: 'relative' }}>
                                     Total products
                                     <div style={{ position: 'absolute', right: '0', top: '0' }}>
-                                        €{states.cart?.reduce(
+                                        €{(states.cart?.reduce(
                                             (accumulator, currentValue) => accumulator + (currentValue.data.gia * currentValue.soluong),
                                             0
-                                        )
+                                        )).toFixed(2)
                                         }
                                     </div>
 
@@ -252,10 +266,10 @@ function Cart({ states }) {
                                     <b style={{ color: '#a749ff' }}>
                                         Total products
                                         <div style={{ position: 'absolute', right: '0', top: '0' }}>
-                                            €{states.cart?.reduce(
+                                            €{(states.cart?.reduce(
                                                 (accumulator, currentValue) => accumulator + (currentValue.data.gia * currentValue.soluong),
                                                 0
-                                            )
+                                            )).toFixed(2)
                                             }
                                         </div>
                                     </b>

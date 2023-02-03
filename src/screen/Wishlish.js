@@ -49,7 +49,7 @@ function Wishlish({ states }) {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',

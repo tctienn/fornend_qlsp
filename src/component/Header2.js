@@ -41,55 +41,31 @@ function Header2({ scrol, states }) {
                 margin: 'auto'
 
             }}>
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        <div style={{ width: '100px' }}>
-                            Home
-                        </div>
-
-                    </div>
+                <div className='line'>
+                    Home
                 </div>
                 <Link to={'/'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
-                    <div style={{ width: '100px' }}>
-                        <div className='line'>
-                            <div style={{ width: '100px' }}>
-                                Shop
-                            </div>
-
-                        </div>
+                    <div className='line'>
+                        Shop
                     </div>
                 </Link>
 
                 <Link to={'/collection'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
-                    <div style={{ width: '100px' }}>
-                        <div className='line'>
-                            <div style={{ width: '100px' }}>
-                                Collecttion
-                            </div>
+                    <div className='line'>
+                        Collecttion
 
-                        </div>
                     </div>
                 </Link>
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        <div style={{ width: '100px' }}>
-                            pages
-                        </div>
+                <div className='line'>
+                    pages
 
-                    </div>
                 </div>
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        <div style={{ width: '100px' }}>
-                            blog
-                        </div>
+                <div className='line'>
+                    blog
 
-                    </div>
                 </div>
-                <div style={{ width: '100px' }}>
-                    <div className='line'>
-                        <div style={{ width: '100px' }}>Contact Us</div>
-                    </div>
+                <div className='line'>
+                    Contact Us
                 </div>
 
             </div>
