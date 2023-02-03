@@ -9,6 +9,10 @@ import { store } from '../Redux/Store'
 import Hide_header from '../component/Hide_header'
 // import { set } from 'immer/dist/internal'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function Product({ states }) {
     let { id } = useParams()  /// id được gửi bằng useparam nếu load lại trang thì sẽ bị mất id có thể thay thế chức năng năng này bằng cách lấy id của url 
     var check = true
@@ -58,11 +62,33 @@ function Product({ states }) {
         const dis = { type: 'add_wishlish', id: Number(id), data: item }
         store.dispatch(dis)
         // store.dispatch({ type: 'INCREMENT_COUNTER' })
+
+        toast.success('add to whish!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     const addcart = (item) => {
         const discart = { type: 'add_cart', id: Number(id), data: item }
         store.dispatch(discart)
+
+        toast.success('add to cart!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
 
     }
 
@@ -83,6 +109,8 @@ function Product({ states }) {
 
                 <Header2 scrol={as} />
                 <Hide_header scrol={as} />
+                <ToastContainer />
+
 
                 {typeof data == 'undefined' ? <div>không tìm thấy id sản phẩm</div> :
                     <div>
@@ -160,7 +188,7 @@ function Product({ states }) {
                                 }}>
                                     {/* <input type='number' name='soluong' style={{ width: '20%' }} value={states.wishlish.find(e => e.id == id)?.soluong} /> */}
                                     <div>
-                                        {states.wishlish.find(e => e.id == id)?.soluong}
+                                        {states.wishlish.find(e => e.id == id)?.soluong || 0}
                                     </div>
                                     <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538' }}>add to cart</button>
                                     <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray' }}></iconify-icon>

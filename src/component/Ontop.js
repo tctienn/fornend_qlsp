@@ -10,7 +10,7 @@ export default function Ontop({ scrol }) {
     return (
 
 
-        <a href='#' onClick={() => as()}
+        <a href='#top' onClick={() => as()}
             style={{
                 width: '2%',
                 /* text-align: center, */
