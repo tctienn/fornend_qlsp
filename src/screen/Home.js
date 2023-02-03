@@ -244,9 +244,9 @@ function Home({ states }) {
                             <b>
                                 Free Shipping
                             </b>
-                            <small>
+                            <div>
                                 Free shipping on all oder
-                            </small>
+                            </div>
                         </div>
                     </li>
                     <li id='free_icon'>
