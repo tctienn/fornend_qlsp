@@ -197,8 +197,8 @@ function Product({ states }) {
                                     <div>
                                         {states.wishlish.find(e => e.id == id)?.soluong || 0}
                                     </div>
-                                    <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538', cursor: 'point', }}>add to cart</button>
-                                    <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray', cursor: 'point' }}></iconify-icon>
+                                    <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538', cursor: 'pointer', }}>add to cart</button>
+                                    <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                 </div>
                                 <br />
