@@ -127,7 +127,7 @@ function Product({ states }) {
                                     color: 'gray', position: 'absolute',
                                     left: '93%',
                                     top: '10px',
-                                    cursor: 'pointer'
+                                    cursor: 'move'
                                 }}></iconify-icon>
                                 {/* ////// zoom img */}
 
