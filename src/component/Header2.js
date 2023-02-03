@@ -41,10 +41,12 @@ function Header2({ scrol, states }) {
                 margin: 'auto'
 
             }}>
-                <div className='line'>
-                    Home
-                </div>
                 <Link to={'/'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
+                    <div className='line'>
+                        Home
+                    </div>
+                </Link>
+                <Link to={'/collection'} className='Link_name_product' style={{ color: 'none', textDecoration: 'none' }}>
                     <div className='line'>
                         Shop
                     </div>
