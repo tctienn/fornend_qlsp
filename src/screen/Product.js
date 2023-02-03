@@ -133,12 +133,19 @@ function Product({ states }) {
 
                                 <div className='zoom' style={{ display: openzoom == false ? 'none' : 'block' }}>
                                     <iconify-icon icon="ph:x" onClick={zoom_click} style={{ color: 'gray', position: 'absolute', right: '10%', top: '10px', cursor: 'pointer' }}></iconify-icon>
-                                    <div style={{ position: 'absolute', right: '20%', top: '2%' }}>
+                                    <div style={{
+                                        position: 'absolute', right: '20%', top: '2%'
+                                    }}>
                                         <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-in-rounded" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                                         <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-out" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                                     </div>
                                     <br />
-                                    <div style={{ width: '70%', margin: 'auto' }}>
+                                    <div style={{
+                                        width: '70%', margin: 'auto',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}>
                                         <img className='img_zoom' style={{ width: `${size_img}%` }} src={data.img1} />
 
                                     </div>
@@ -190,8 +197,8 @@ function Product({ states }) {
                                     <div>
                                         {states.wishlish.find(e => e.id == id)?.soluong || 0}
                                     </div>
-                                    <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538' }}>add to cart</button>
-                                    <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray' }}></iconify-icon>
+                                    <button onClick={() => addcart(data)} style={{ color: 'white', backgroundColor: '#343538', cursor: 'point', }}>add to cart</button>
+                                    <iconify-icon icon="bi:heart" onClick={() => addwish(data)} style={{ color: 'gray', cursor: 'point' }}></iconify-icon>
                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                 </div>
                                 <br />
