@@ -17,3 +17,15 @@ export const getProducts = () => {
 export const search = (params) => {
     return api.get(`/data`, { params })
 }
+export const postcart = (id, data) => {
+    return (
+        axios.put(`https://639365baab513e12c50d3b55.mockapi.io/obj/users/`, data)
+            .then(res => {
+                console.log(axios);
+                console.log(res.data);
+            })
+            .catch(function (error) {
+                axios.post(`https://639365baab513e12c50d3b55.mockapi.io/obj/users/`, { name: 'ay' })
+            })
+    )
+}

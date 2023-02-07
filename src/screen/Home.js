@@ -135,7 +135,9 @@ function Home({ states }) {
                 <Header2 scrol={as} />
                 <Hide_header scrol={as} />
                 <Ontop scrol={as} />
-
+                {/* <button onClick={() => p}>
+                    ay
+                </button> */}
                 <div className='slide'>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
@@ -152,9 +154,11 @@ function Home({ states }) {
                                             </h1>
                                         </div>
 
-                                        <div className='button_slide_home'>
-                                            Buy now
-                                        </div>
+                                        <a href='#ui' style={{ textDecoration: 'none', color: "black" }}>
+                                            <div className='button_slide_home'>
+                                                Buy now
+                                            </div>
+                                        </a>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-hm1-2.png' className='img_slide' />
                                 </div>
@@ -172,9 +176,11 @@ function Home({ states }) {
                                             </h1>
                                         </div>
 
-                                        <div className='button_slide_home'>
-                                            Buy now
-                                        </div>
+                                        <a href='#ui' style={{ textDecoration: 'none', color: "black" }}>
+                                            <div className='button_slide_home'>
+                                                Buy now
+                                            </div>
+                                        </a>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
                                 </div>
@@ -192,9 +198,11 @@ function Home({ states }) {
                                             </h1>
                                         </div>
 
-                                        <div className='button_slide_home'>
-                                            Buy now
-                                        </div>
+                                        <a href='#ui' style={{ textDecoration: 'none', color: "black" }}>
+                                            <div className='button_slide_home'>
+                                                Buy now
+                                            </div>
+                                        </a>
                                     </div>
                                     <img src='https://flone.jamstacktemplates.dev/assets/img/slider/single-slide-1.png' className='img_slide' />
                                 </div>
@@ -291,10 +299,10 @@ function Home({ states }) {
 
                 {/* <marquee behavior='scroll' >Hoc HTML tai VietJack - Vi du cach su dung the marquee.</marquee> */}
 
-                <div className='products'>
+                <div className='products' id='ui'>
                     {/* {console.log("states: ...", states)}
                     {states.products ? states.products[1].name : ""} */}
-                    {products.map((e, ii) =>
+                    {states.products?.slice(0, 8).map((e, ii) =>
                         <div key={ii} className='product' >
                             <div className='mini_add'>
                                 new

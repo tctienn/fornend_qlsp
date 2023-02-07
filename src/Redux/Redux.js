@@ -43,6 +43,9 @@ const initialState = {
     counter: 0,
     wishlish: [],
     cart: [],
+
+    TH: false,
+
 };
 
 ///thunk
@@ -112,6 +115,7 @@ const ReduxF = (state = initialState, action) => {
 
             if (check2 == false)
                 aa.push({ id: action.id, soluong: 1, data: action.data })
+            console.log(aa)
             return {
                 ...state,
                 cart: aa
@@ -129,19 +133,23 @@ const ReduxF = (state = initialState, action) => {
                     break
                 }
             }
-            return { ...state, cart: ay2 }
+            return { ...state, TH: false, cart: ay2 }
 
         case ('giam_cart'):
             var ay2 = state.cart
+            var th = false
             for (let ii = 0; ii < ay2.length; ii++) {
                 if (ay2[ii].id == action.id) {
                     if (ay2[ii].soluong > 1) {
                         ay2[ii].soluong--
                         break
                     }
+                    else {
+                        th = true
+                    }
                 }
             }
-            return { ...state, cart: ay2 }
+            return { ...state, TH: th, cart: ay2 }
 
         case ('clear_cart'):
             var ay2 = []

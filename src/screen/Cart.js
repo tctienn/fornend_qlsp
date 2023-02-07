@@ -27,11 +27,29 @@ function Cart({ states }) {
 
     const [as, setAs] = useState('')
     useEffect(() => {
-        var scroller = document.querySelector("#scroller");
-        scroller.addEventListener("scroll", (event) => {
-            // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            setAs(scroller.scrollTop)
-        }, [as]);
+        // var scroller = document.querySelector("#scroller");
+        // scroller.addEventListener("scroll", (event) => {
+        //     // output.textContent = `scrollTop: ${scroller.scrollTop}`;
+        //     setAs(scroller.scrollTop)
+        // }, [as]);
+
+        const checks = () => {
+
+            if (states.TH == true) {
+
+                toast.success(' số lượng sản phẩm không được nhỏ hơn 1  ', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+            }
+        }
+        checks()
     })
 
 
@@ -76,7 +94,7 @@ function Cart({ states }) {
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',
                     width: '100%',
-                    height: '660px',
+                    // height: '660px',
                     // overflowX: 'hidden',
                     overflowY: 'auto',
                     // backgroundColor: '#f3f4f6'
@@ -154,8 +172,9 @@ function Cart({ states }) {
                                                     </button>
                                                     <div>{e.soluong}</div>
                                                     <button onClick={() => click_input_g(e)} name='-' className='button_number'>
-                                                        <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray' }}></iconify-icon>
+                                                        <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray', opacity: states.TH ? '0' : '1' }}></iconify-icon>
                                                     </button>
+                                                    {console.log(states.TH)}
 
                                                 </div>
                                             </td>
