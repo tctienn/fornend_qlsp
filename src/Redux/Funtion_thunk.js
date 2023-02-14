@@ -105,7 +105,7 @@ export const postcart = (id, soluong, data) => async (dispatch) => {
     return await api_cart.get('/cart')
         .then(res => {
             const check_id = res.data.find(e => e.id == id)
-            console.log(typeof check_id)
+            // console.log(typeof check_id)
             if (typeof check_id != 'undefined') {
                 api_cart.put(`/cart/${check_id.id_def}`, { id: id, soluong: (check_id.soluong + soluong), data: data })
                     .then(
@@ -115,7 +115,8 @@ export const postcart = (id, soluong, data) => async (dispatch) => {
             else {
                 return api_cart.post(`/cart`, { id: id, soluong: soluong, data: data })
                     .then(
-                        dispatch({ type: 'tangcart', cart: res.data })
+
+                        dispatch({ type: 'tangcart', cart: { id: id, soluong: soluong, data: data } })
 
                     )
             }

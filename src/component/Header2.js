@@ -115,7 +115,7 @@ function Header2({ scrol, states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    // console.log('test', states.cart)
+    console.log('test', states.cart)
     return { states }
 };
 

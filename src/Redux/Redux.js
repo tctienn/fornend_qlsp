@@ -196,8 +196,9 @@ const ReduxF = (state = initialState, action) => {
             return { ...state, products: action.products }
 
         case ('tangcart'):
-            console.log(action.cart)
-            return { ...state, cart: action.cart }
+            var cart_ar = state.cart
+            cart_ar.push(action.cart)
+            return { ...state, cart: cart_ar }
 
         case ('getcart'):
 
