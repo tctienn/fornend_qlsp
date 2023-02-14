@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import Initial from '../Redux/Initial';
 import './Header2.css'
 
 function Header2({ scrol, states }) {
@@ -17,6 +18,7 @@ function Header2({ scrol, states }) {
     }
     return (
         <div className={scrol <= 10 ? 'border' : 'border2'}>
+            <Initial />
             <Link to={'/'} style={{
                 // width: '170px',
                 height: '41%',
@@ -103,27 +105,7 @@ function Header2({ scrol, states }) {
                 </div>
             </div>
 
-            {/* <div>
-                <div style={{ width: '100px' }}>
-                    defalts
-                    <select>
-                        <option>dafault</option>
-                        <option>s</option>
 
-                        <option>s</option>
-
-                    </select>
-                </div>
-                <div>
-
-                </div>
-            </div> */}
-
-            {/* <iconify-icon icon="et:profile-female"></iconify-icon> */}
-
-            {/* <iconify-icon icon="mdi:tick-network"></iconify-icon> */}
-
-            {/* <iconify-icon icon="et:profile-female"></iconify-icon> */}
 
         </div >
     )
@@ -133,7 +115,7 @@ function Header2({ scrol, states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    // console.log('test', states)
+    // console.log('test', states.cart)
     return { states }
 };
 

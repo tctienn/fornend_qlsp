@@ -2,10 +2,12 @@
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { api } from "../Axiot/api";
 
-import { getProducts } from "../Axiot/api";
+import { api_cart, getcart, getProducts } from "../Axiot/api";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
+import Initial from "./Initial";
 // const data = {
 //     value: 1,
 // }
@@ -38,11 +40,27 @@ import 'react-toastify/dist/ReactToastify.css';
 // export default ReduxF.reducer
 
 
+// const getallcart = () => async (dispatch) => {
+//     const res = await getcart();
+
+//     console.log('ay', res.data)
+//     dispatch({ type: 'getcart', cart: res.data })
+
+// }
+
+// // const getallcart = getcart
+
+// // const runFunc = getcart()
+
+// // console.log('fg', runFunc)
+
+
 
 const initialState = {
     counter: 0,
     wishlish: [],
     cart: [],
+
 
     TH: false,
 
@@ -60,15 +78,13 @@ const initialState = {
 // }
 
 
+//
+
 const ReduxF = (state = initialState, action) => {
+
+
     switch (action.type) {
-        case ('INCREMENT_COUNTER'):
-            return { ...state, counter: (state.counter + 1) };
-        case ('DECREMENT_COUNTER'):
-            return {
-                ...state,
-                counter: state.counter - 1
-            };
+
         case ('add_wishlish'):
             let check = false
             const a = state.wishlish;
@@ -98,7 +114,7 @@ const ReduxF = (state = initialState, action) => {
             ay = ay.filter(e => e.id != action.id)
             return { ...state, wishlish: ay }
 
-        case ('add_cart'):
+            // case ('add_cart'):
             let check2 = false
             const aa = state.cart;
             if (aa.length > 0) {
@@ -126,34 +142,34 @@ const ReduxF = (state = initialState, action) => {
             return { ...state, cart: ay2 }
 
         case ('tang_cart'):
-            var ay2 = state.cart
-            for (let ii = 0; ii < ay2.length; ii++) {
-                if (ay2[ii].id == action.id) {
-                    ay2[ii].soluong++
-                    break
-                }
-            }
-            return { ...state, TH: false, cart: ay2 }
+        // var ay2 = state.cart
+        // for (let ii = 0; ii < ay2.length; ii++) {
+        //     if (ay2[ii].id == action.id) {
+        //         ay2[ii].soluong++
+        //         break
+        //     }
+        // }
+        // return { ...state, TH: false, cart: ay2 }
 
         case ('giam_cart'):
-            var ay2 = state.cart
-            var th = false
-            for (let ii = 0; ii < ay2.length; ii++) {
-                if (ay2[ii].id == action.id) {
-                    if (ay2[ii].soluong > 1) {
-                        ay2[ii].soluong--
-                        break
-                    }
-                    else {
-                        th = true
-                    }
-                }
-            }
-            return { ...state, TH: th, cart: ay2 }
+        // var ay2 = state.cart
+        // var th = false
+        // for (let ii = 0; ii < ay2.length; ii++) {
+        //     if (ay2[ii].id == action.id) {
+        //         if (ay2[ii].soluong > 1) {
+        //             ay2[ii].soluong--
+        //             break
+        //         }
+        //         else {
+        //             th = true
+        //         }
+        //     }
+        // }
+        // return { ...state, TH: th, cart: ay2 }
 
         case ('clear_cart'):
-            var ay2 = []
-            return { ...state, cart: ay2 }
+        // var ay2 = []
+        // return { ...state, cart: ay2 }
 
 
         case ('get_products'):
@@ -179,7 +195,22 @@ const ReduxF = (state = initialState, action) => {
 
             return { ...state, products: action.products }
 
+        case ('tangcart'):
+            console.log(action.cart)
+            return { ...state, cart: action.cart }
+
+        case ('getcart'):
+
+            return { ...state, cart: action.cart }
+
         default:
+            // getallcart()/// load cart lần đầu
+            // console.log(initializeData())
+            // initializeData()
+            // console.log(ay)
+            // var as = []
+
+
             return state
     }
 };

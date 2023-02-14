@@ -15,6 +15,7 @@ import Wishlish from './screen/Wishlish';
 import Cart from './screen/Cart';
 import Collection from './screen/Collection';
 import Push from './screen/demo/Push';
+import Push2 from './screen/demo/Push2';
 
 
 export default function Appcompo() {
@@ -31,7 +32,9 @@ export default function Appcompo() {
                 {/* <Route path='/cart' element={<Cart />} /> */}
 
 
-                <Route path='/' exact element={<Push />} />
+                {/* <Route path='/' exact element={<Push />} /> */}
+                {/* <Route path='/' exact element={<Push2 />} /> */}
+
 
 
                 <Route path='/' exact element={<Home />} />

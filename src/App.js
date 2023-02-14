@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import Appcompo from './Appcompo';
 import { Provider } from 'react-redux';
 import { store } from './Redux/Store';

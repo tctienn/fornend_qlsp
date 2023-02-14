@@ -9,7 +9,7 @@ import Header2 from '../component/Header2'
 import Hide_header from '../component/Hide_header'
 import Ontop from '../component/Ontop'
 import { products } from '../data/data'
-import { frech_thunk, get_product_loai, get_tag, search_product, get_product_color, get_product_size, sx_price } from '../Redux/Funtion_thunk'
+import { frech_thunk, get_product_loai, get_tag, search_product, get_product_color, get_product_size, sx_price, postcart } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
 
@@ -222,8 +222,9 @@ function Collection({ states }) {
     }
 
     const addcart = (item) => {
-        const discart = { type: 'add_cart', id: Number(item.id), data: item }
-        store.dispatch(discart)
+        // const discart = { type: 'add_cart', id: Number(item.id), data: item }
+        // store.dispatch(discart)
+        store.dispatch(postcart(item.id, 1, item))
 
         toast.success('add to cart!', {
             position: "bottom-left",
@@ -530,7 +531,7 @@ function Collection({ states }) {
                                                 </div>
                                             )
                                         ) :
-
+                                        ///////////// x 1
                                         (
                                             <div style={{ width: '100%' }}>
                                                 {

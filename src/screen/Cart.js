@@ -9,6 +9,7 @@ import { store } from '../Redux/Store'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_cart, getProducts, getcart } from '../Axiot/api'
 
 
 function Cart({ states }) {
@@ -24,6 +25,20 @@ function Cart({ states }) {
 
     // }
     // console.log(check)
+    // const get_cart = () => async () => {
+    //     const res = await api_cart.get()
+    //     // store.dispatch({ type: 'getcart', cart: res.data })
+    //     console.log('ay')
+    // }
+    // useEffect(() => {
+    //     const get_cart = async () => {
+    //         const res = await getcart()
+    //         store.dispatch({ type: 'getcart', cart: res.data })
+
+    //     }
+    //     get_cart()
+
+    // }, [])
 
     const [as, setAs] = useState('')
     useEffect(() => {
@@ -75,6 +90,7 @@ function Cart({ states }) {
 
         store.dispatch({ type: 'tang_cart', id: id.id })
 
+
     }
 
     const click_input_g = (id) => {
@@ -89,7 +105,9 @@ function Cart({ states }) {
 
     return (
         <div>
+
             {/* <Header /> */}
+
             <div
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',
@@ -100,6 +118,9 @@ function Cart({ states }) {
                     // backgroundColor: '#f3f4f6'
 
                 }}>
+                {/* <button onClick={() => get_cart()}>
+                    ay
+                </button> */}
 
                 <Header2 scrol={as} />
                 <ToastContainer />
@@ -125,6 +146,7 @@ function Cart({ states }) {
                     <div className='lish_item'>
                         <div className='body_lish_item'>
                             your lish item
+
                             <table width='100%'>
                                 <tbody>
                                     <tr style={{ backgroundColor: '#f9f9f9' }} >
@@ -320,7 +342,7 @@ function Cart({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    // console.log('test', states)
+    // console.log('test', states.cart)
     return { states }
 };
 

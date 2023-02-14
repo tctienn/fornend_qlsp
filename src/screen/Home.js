@@ -8,11 +8,12 @@ import Header2 from '../component/Header2'
 import Hide_header from '../component/Hide_header'
 import Ontop from '../component/Ontop'
 import { products } from '../data/data'
-import { frech_thunk, get_tag } from '../Redux/Funtion_thunk'
+import { frech_thunk, get_tag, postcart } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Initial from '../Redux/Initial'
 
 function Home({ states }) {
 
@@ -51,20 +52,20 @@ function Home({ states }) {
     // const dispatch = useDispatch()
 
     const [data, setData] = useState()
-    useEffect(() => {
-        // const frech = async () => {
-        //     const res = await getProducts();
-        //     setData(res.data)
-        //     console.log('ay', res.data)
+    // useEffect(() => {
+    //     // const frech = async () => {
+    //     //     const res = await getProducts();
+    //     //     setData(res.data)
+    //     //     console.log('ay', res.data)
 
-        // }
-        // frech()
-        store.dispatch(frech_thunk())
-        // setData(states)
-        // console.log('vl', states)
+    //     // }
+    //     // frech()
+    //     store.dispatch(frech_thunk())
+    //     // setData(states)
+    //     // console.log('vl', states)
 
-        // dispatch(thunk_funtion())
-    }, [])
+    //     // dispatch(thunk_funtion())
+    // }, [])
 
 
     /// ayyy
@@ -99,8 +100,8 @@ function Home({ states }) {
     // }
 
     const addcart = (item) => {
-        const discart = { type: 'add_cart', id: Number(item.id), data: item }
-        store.dispatch(discart)
+        // const discart = { type: 'add_cart', id: Number(item.id), data: item }
+        store.dispatch(postcart(item.id, 1, item))
         toast.success('add to cart!', {
             position: "bottom-left",
             autoClose: 5000,
@@ -821,7 +822,7 @@ function Home({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    console.log('test', states.cart)
+    // console.log('test', states.cart)
     return { states }
 };
 

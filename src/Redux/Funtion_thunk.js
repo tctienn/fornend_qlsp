@@ -1,4 +1,4 @@
-import { getProducts, search } from "../Axiot/api"
+import { api_cart, getProducts, search } from "../Axiot/api"
 
 export const frech_thunk = () => async (dispatch) => {
     const res = await getProducts();
@@ -96,4 +96,57 @@ export const sx_price = (hienthi) => async (dispatch) => {
 
     console.log(sx)
     dispatch({ type: 'sx_price', products: sx })
+}
+
+
+///// them cart thông qua api
+
+export const postcart = (id, soluong, data) => async (dispatch) => {
+    return await api_cart.get('/cart')
+        .then(res => {
+            const check_id = res.data.find(e => e.id == id)
+            console.log(typeof check_id)
+            if (typeof check_id != 'undefined') {
+                api_cart.put(`/cart/${check_id.id_def}`, { id: id, soluong: (check_id.soluong + soluong), data: data })
+                    .then(
+                        dispatch({ type: 'tangcart', cart: res.data })
+                    )
+            }
+            else {
+                return api_cart.post(`/cart`, { id: id, soluong: soluong, data: data })
+                    .then(
+                        dispatch({ type: 'tangcart', cart: res.data })
+
+                    )
+            }
+        }
+        )
+
+
+}
+
+
+export const giam_cart = (id, soluong, data) => {
+    return api_cart.get('/cart')
+        .then(res => {
+
+            const check_id = res.data.find(e => e.id == id)
+
+            if (typeof check_id != 'undefined') {
+                return api_cart.put(`/cart/${check_id.id_def}`, { id: id, soluong: (check_id.soluong - soluong), data: data })
+                    .then(res => {
+                        // console.log(axios);
+                        // console.log(res.data);
+                    })
+
+            }
+            else {
+
+                // console.log('add')
+                return api_cart.post(`/cart`, { id: id, soluong: soluong, data: data })
+            }
+        }
+        )
+
+
 }
