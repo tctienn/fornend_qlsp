@@ -83,7 +83,7 @@ function Home({ states }) {
 
         toast.success('add to wishlish!', {
             position: "bottom-left",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -99,21 +99,31 @@ function Home({ states }) {
 
     // }
 
+    /////////////////////////sử lý debounce
+    function debounce(func, timeout = 300) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+    // function saveInput(item) {
+    //     console.log('Saving data' + item);
+    // }
+    const addcart_debounce = (item) => {
+        store.dispatch(postcart(item.id, 1, item))
+    }
+    const processChange = debounce((item) => addcart_debounce(item))
     const addcart = (item) => {
         // const discart = { type: 'add_cart', id: Number(item.id), data: item }
-        store.dispatch(postcart(item.id, 1, item))
-        toast.success('add to cart!', {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        })
+        // store.dispatch(postcart(item.id, 1, item))
+        // const processChange = debounce(() => saveInput());
+
+        processChange(item)
 
     }
+
+    //////////end debounce
 
     return (
         <div style={{

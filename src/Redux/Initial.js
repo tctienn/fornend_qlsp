@@ -7,8 +7,6 @@ import { store } from './Store';
 function Initial() {
 
     useEffect(() => {
-
-
         const get_cart = async () => {
             const res = await getcart()
             store.dispatch({ type: 'getcart', cart: res.data })

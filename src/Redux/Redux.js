@@ -131,7 +131,7 @@ const ReduxF = (state = initialState, action) => {
 
             if (check2 == false)
                 aa.push({ id: action.id, soluong: 1, data: action.data })
-            console.log(aa)
+            // console.log(aa)
             return {
                 ...state,
                 cart: aa
@@ -141,7 +141,7 @@ const ReduxF = (state = initialState, action) => {
             ay2 = ay2.filter(e => e.id != action.id)
             return { ...state, cart: ay2 }
 
-        case ('tang_cart'):
+        // case ('tang_cart'):
         // var ay2 = state.cart
         // for (let ii = 0; ii < ay2.length; ii++) {
         //     if (ay2[ii].id == action.id) {
@@ -151,7 +151,7 @@ const ReduxF = (state = initialState, action) => {
         // }
         // return { ...state, TH: false, cart: ay2 }
 
-        case ('giam_cart'):
+        // case ('giam_cart'):
         // var ay2 = state.cart
         // var th = false
         // for (let ii = 0; ii < ay2.length; ii++) {
@@ -167,7 +167,7 @@ const ReduxF = (state = initialState, action) => {
         // }
         // return { ...state, TH: th, cart: ay2 }
 
-        case ('clear_cart'):
+        // case ('clear_cart'):
         // var ay2 = []
         // return { ...state, cart: ay2 }
 
@@ -195,10 +195,37 @@ const ReduxF = (state = initialState, action) => {
 
             return { ...state, products: action.products }
 
-        case ('tangcart'):
+        case ('post_cart'):
             var cart_ar = state.cart
             cart_ar.push(action.cart)
+            // console.log(action.cart)
             return { ...state, cart: cart_ar }
+
+        case ('tang_cart'):
+            console.log('action tang cart ', action.soluong)
+            var ay2 = state.cart
+            ay2.map(e => e.id == action.id ? e.soluong = action.soluong : '')
+            // console.log('gam cart :', action.soluong)
+            return { ...state, cart: ay2, TH: false }
+
+
+        case ('giam_cart'):
+            // var cart_ar = state.cart
+            // cart_ar.push(action.cart)
+
+
+            // state = state.cart.map(e => e.id == action.id ? e.soluong-- : '')
+
+            if (action.check == true) {
+                console.log(state.cart)
+                return { ...state, TH: true }
+            }
+            else {
+                var ay2 = state.cart
+                ay2.map(e => e.id == action.id ? e.soluong = action.soluong : '')
+                console.log('ay2')
+                return { ...state, cart: ay2, TH: false }
+            }
 
         case ('getcart'):
 

@@ -36,3 +36,7 @@ export const getcart = () => {
 
 }
 
+export const delete_cart_api = (param) => {
+    return api_cart.delete(`/cart/${param}`)
+}
+

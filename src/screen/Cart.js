@@ -10,6 +10,7 @@ import { store } from '../Redux/Store'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_cart, getProducts, getcart } from '../Axiot/api'
+import { delete_cart, giam_cart, postcart } from '../Redux/Funtion_thunk'
 
 
 function Cart({ states }) {
@@ -54,7 +55,7 @@ function Cart({ states }) {
 
                 toast.success(' số lượng sản phẩm không được nhỏ hơn 1  ', {
                     position: "bottom-left",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -69,8 +70,8 @@ function Cart({ states }) {
 
 
     const delete_on_wish = (id, name) => {
-        let ay = { type: 'delete_cart', id: id }
-        store.dispatch(ay)
+        // let ay = { type: 'delete_cart', id: id }
+        store.dispatch(delete_cart(id))
 
         toast.success(' đã xóa sản phẩm : ' + name, {
             position: "bottom-left",
@@ -88,14 +89,20 @@ function Cart({ states }) {
 
     const click_input_t = (id) => {
 
-        store.dispatch({ type: 'tang_cart', id: id.id })
+        // store.dispatch({ type: 'tang_cart', id: id.id })
+        // store.dispatch(postcart())
+        store.dispatch(postcart(id.id, 1))
+
 
 
     }
 
     const click_input_g = (id) => {
 
-        store.dispatch({ type: 'giam_cart', id: id.id })
+        // store.dispatch({ type: 'giam_cart', id: id.id })
+
+        store.dispatch(giam_cart(id.id, 1))
+
 
     }
 
@@ -196,7 +203,7 @@ function Cart({ states }) {
                                                     <button onClick={() => click_input_g(e)} name='-' className='button_number'>
                                                         <iconify-icon icon="ic:baseline-minus" style={{ color: 'gray', opacity: states.TH ? '0' : '1' }}></iconify-icon>
                                                     </button>
-                                                    {console.log(states.TH)}
+
 
                                                 </div>
                                             </td>
