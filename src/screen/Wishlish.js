@@ -6,7 +6,7 @@ import Header2 from '../component/Header2'
 import Header from '../component/Header'
 import { products } from '../data/data'
 import { store } from '../Redux/Store'
-import { delete_wish } from '../Redux/Funtion_thunk'
+import { delete_cart, delete_wish } from '../Redux/Funtion_thunk'
 import { toast, ToastContainer } from 'react-toastify'
 // import Funtion_debounce from '../Redux/Funtion_debounce'
 // import { set } from 'immer/dist/internal'
@@ -37,12 +37,27 @@ function Wishlish({ states }) {
     })
 
 
-    const delete_on_wish = (e) => {
-        // let ay = { type: 'delete_wish', id: id }
-        // store.dispatch(ay)
-        store.dispatch(delete_wish(e.id))
+    // const delete_on_wish = (e) => {
+    //     // let ay = { type: 'delete_wish', id: id }
+    //     // store.dispatch(ay)
+    //     store.dispatch(delete_wish(e.id))
 
-        toast.success(' đã xóa sản phẩm : ' + e.data.name + ' khỏi danh sách mong muốn', {
+    //     toast.success(' đã xóa sản phẩm : ' + e.data.name + ' khỏi danh sách mong muốn', {
+    //         position: "bottom-left",
+    //         autoClose: 5000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //     })
+    // }
+    const delete_on_wish = (id) => {
+        // let ay = { type: 'delete_cart', id: id }
+        store.dispatch(delete_cart(id))
+
+        toast.success(' đã xóa sản phẩm  ', {
             position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
