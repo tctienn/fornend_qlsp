@@ -199,7 +199,7 @@ function Collection({ states }) {
 
         action_s.current = name
         setAy(name)
-        console.log(action_s.current)
+        // console.log(action_s.current)
 
     }
 
@@ -540,7 +540,7 @@ function Collection({ states }) {
                                                     !states.products ? '' : states.products.slice(page_number.current, (page_number.current + 9)).map((e, ii) =>
                                                         <div key={ii} className='product' style={{ width: '100%', aspectRatio: '60/25', margin: '11px 6px', display: 'flex' }} >
 
-                                                            <div className='img_product2' style={{ width: '34%', aspectRatio: '65/87' }}>
+                                                            <div className='img_product2' style={{ width: '34%', height: '100%' }}>
                                                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '100%' }} src={e.img2} />
                                                             </div>
                                                             <div style={{ width: '34%', aspectRatio: '65/87' }}>

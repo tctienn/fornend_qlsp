@@ -55,7 +55,7 @@ function Wishlish({ states }) {
     // }
     const delete_on_wish = (id) => {
         // let ay = { type: 'delete_cart', id: id }
-        store.dispatch(delete_cart(id))
+        store.dispatch(delete_wish(id.id))
 
         toast.success(' đã xóa sản phẩm  ', {
             position: "bottom-left",
@@ -175,7 +175,7 @@ function Wishlish({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    console.log('test', states.wishlish)
+    // console.log('test', states.wishlish)
     return { states }
 };
 

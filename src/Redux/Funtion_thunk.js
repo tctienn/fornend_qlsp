@@ -251,10 +251,12 @@ export const postwish = (id, data) => async (dispatch) => {
 }
 
 export const delete_wish = (id) => (dispatch) => {
+    console.log(id)
     return api_cart.get('/wish')
         .then(res => {
             const check_id = res.data.find(e => e.id == id)
             delete_wish_api(check_id.id_def)
+
             dispatch({ type: 'delete_wish', id: id })
         })
 
