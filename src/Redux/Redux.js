@@ -202,7 +202,7 @@ const ReduxF = (state = initialState, action) => {
             return { ...state, cart: cart_ar }
 
         case ('tang_cart'):
-            console.log('action tang cart ', action.soluong)
+            // console.log('action tang cart ', action.soluong)
             var ay2 = state.cart
             ay2.map(e => e.id == action.id ? e.soluong = action.soluong : '')
             // console.log('gam cart :', action.soluong)

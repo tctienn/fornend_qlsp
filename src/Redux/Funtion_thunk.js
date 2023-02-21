@@ -109,9 +109,9 @@ export const postcart = (id, soluong, data) => async (dispatch) => {
             // some array ??
             // const resss = res
             // console.log("action: ", check_id, id, data, resss)
-            // console.log(typeof check_id)
+            // console.log(typeof check_id, id)
             if (typeof check_id != 'undefined') {
-                console.log('check ', check_id)
+                // console.log('check ', check_id)
                 api_cart.put(`/cart/${check_id.id_def}`, { id: check_id.id, soluong: (check_id.soluong + soluong), data: data })
                     .then(
                         dispatch({ type: 'tang_cart', id: id, soluong: (check_id.soluong + soluong) }),
@@ -128,6 +128,8 @@ export const postcart = (id, soluong, data) => async (dispatch) => {
                     )
             }
             else { /// nếu click sản phẩm mới nhanh thì hàm chỉ chạy điều kiện này
+                // console.log('check ')
+
                 return api_cart.post(`/cart`, { id: id, soluong: soluong, data: data })
                     .then(
 

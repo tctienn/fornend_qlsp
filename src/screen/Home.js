@@ -13,7 +13,8 @@ import { store } from '../Redux/Store'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Initial from '../Redux/Initial'
+import { Funtion_debounce } from '../Redux/Funtion_debounce'
+
 
 function Home({ states }) {
 
@@ -100,26 +101,55 @@ function Home({ states }) {
     // }
 
     /////////////////////////sử lý debounce
-    function debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
-        };
+    const [value_de, setValue_de] = useState({ soluong: 0, data: {} })
+    const trangthai_de = Funtion_debounce(value_de, 800)
+
+    const ham = () => {
+        // setValue_de({ ...value_de, soluong: (value_de.soluong + 1) })
+        // console.log(value_de)
     }
-    // function saveInput(item) {
-    //     console.log('Saving data' + item);
+    // useEffect(() => {
+    //     if (trangthai_de != 'ui') {
+    //         console.log('trangthai_de')
+    //     }
+    //     // console.log(trangthai_de)
+    // }, [trangthai_de])
+
+
+
+    // function debounce(func, timeout = 300) {
+    //     let timer;
+    //     return (...args) => {
+    //         clearTimeout(timer);
+    //         timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    //     };
     // }
-    const addcart_debounce = (item) => {
-        store.dispatch(postcart(item.id, 1, item))
-    }
-    const processChange = debounce((item) => addcart_debounce(item))
+    // // function saveInput(item) {
+    // //     console.log('Saving data' + item);
+    // // }
+    // const addcart_debounce = (item) => {
+    //     store.dispatch(postcart(item.id, 1, item))
+    // }
+    // const processChange = debounce((item) => addcart_debounce(item))
     const addcart = (item) => {
         // const discart = { type: 'add_cart', id: Number(item.id), data: item }
         // store.dispatch(postcart(item.id, 1, item))
+        // console.log(item.id)
         // const processChange = debounce(() => saveInput());
 
-        processChange(item)
+        // processChange(item)
+        // if (trangthai_de != 'ui') {
+        //     setValue_de({ soluong: (value_de.soluong + 1), data: item })
+        //     setValue_de({ soluong: 0, data: {} })
+        // }
+        setValue_de({ soluong: (value_de.soluong + 1), data: item })
+        // setValue_de({ soluong: 0, data: {} })
+
+        // Funtion_debounce(value_de, 800)
+
+        // console.log(trangthai_de)
+        // if (trangthai_de != 'ui') { }
+
 
     }
 
@@ -157,6 +187,7 @@ function Home({ states }) {
                                 <div className='item_slide'>
                                     <div>
                                         <div>
+
                                             <b>
                                                 smart products
                                             </b>

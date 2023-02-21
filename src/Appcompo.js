@@ -28,7 +28,7 @@ export default function Appcompo() {
                 {/* <Route path='/demo2/:id' element={<Demo />} /> */}
                 {/* <Route>lỗi </Route> */}
 
-                {/* <Route path="/demo/:id" element={<Demo />} /> */}
+                {/* <Route path="/" element={<Demo4 />} /> */}
                 {/* <Route path='/cart' element={<Cart />} /> */}
 
 
