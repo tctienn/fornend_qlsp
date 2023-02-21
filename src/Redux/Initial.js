@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getcart, getProducts } from '../Axiot/api';
+import { getcart, getProducts, getwish } from '../Axiot/api';
 import { frech_thunk } from './Funtion_thunk';
 import { store } from './Store';
 
@@ -12,9 +12,14 @@ function Initial() {
             store.dispatch({ type: 'getcart', cart: res.data })
 
         }
+        const get_wish = async () => {
+            const res = await getwish()
+            store.dispatch({ type: 'getwish', wish: res.data })
 
+        }
         store.dispatch(frech_thunk())
         get_cart()
+        get_wish()
 
         //
 

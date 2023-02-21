@@ -108,6 +108,7 @@ function Cart({ states }) {
 
     const onclick_clear_cart = () => {
         store.dispatch({ type: 'clear_cart' })
+
     }
 
     return (

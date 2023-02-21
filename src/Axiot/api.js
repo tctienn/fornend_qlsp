@@ -40,3 +40,19 @@ export const delete_cart_api = (param) => {
     return api_cart.delete(`/cart/${param}`)
 }
 
+//////////wish
+
+
+
+
+export const getwish = () => {
+    // const res = await api_cart.get('/cart');
+    // console.log('ay', res.data)
+
+    return api_cart.get(`/wish`)
+
+}
+
+export const delete_wish_api = (param) => {
+    return api_cart.delete(`/wish/${param}`)
+}

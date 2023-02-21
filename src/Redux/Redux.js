@@ -109,7 +109,7 @@ const ReduxF = (state = initialState, action) => {
                 wishlish: a
             };
 
-        case ('delete_wish'):
+            // case ('delete_wish'):
             let ay = state.wishlish
             ay = ay.filter(e => e.id != action.id)
             return { ...state, wishlish: ay }
@@ -217,19 +217,33 @@ const ReduxF = (state = initialState, action) => {
             // state = state.cart.map(e => e.id == action.id ? e.soluong-- : '')
 
             if (action.check == true) {
-                console.log(state.cart)
+                // console.log(state.cart)
                 return { ...state, TH: true }
             }
             else {
                 var ay2 = state.cart
                 ay2.map(e => e.id == action.id ? e.soluong = action.soluong : '')
-                console.log('ay2')
+                // console.log('ay2')
                 return { ...state, cart: ay2, TH: false }
             }
 
+
+        case ('post_wish'):
+            var wish_ar = state.wishlish
+            wish_ar.push(action.wish)
+            console.log(wish_ar)
+            return { ...state, wishlish: wish_ar }
+
+        case ('delete_wish'):
+            var ay2 = state.wishlish
+            ay2 = ay2.filter(e => e.id != action.id)
+            return { ...state, wishlish: ay2 }
         case ('getcart'):
 
             return { ...state, cart: action.cart }
+        case ('getwish'):
+
+            return { ...state, wishlish: action.wish }
 
         default:
             // getallcart()/// load cart lần đầu

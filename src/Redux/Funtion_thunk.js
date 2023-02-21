@@ -1,4 +1,4 @@
-import { api_cart, delete_cart_api, getProducts, search } from "../Axiot/api"
+import { api_cart, delete_cart_api, delete_wish_api, getProducts, search } from "../Axiot/api"
 import { ToastContainer, toast } from 'react-toastify';
 
 export const frech_thunk = () => async (dispatch) => {
@@ -165,12 +165,22 @@ export const giam_cart = (id, soluong) => (dispatch) => {
                 var check = check_id.soluong <= 1 ? true : false
                 if (check != true) {
                     // console.log(check_id)
-                    return api_cart.put(`/cart/${check_id.id_def}`, { id: id, soluong: (check_id.soluong - soluong), data: check_id.data })
-                        .then(res => {
-                            dispatch({ type: 'giam_cart', id: id, soluong: ((check_id.soluong - soluong)), check: check })
-                        })
+                    return api_cart.put(`/cart/${check_id.id_def}`, { id: id, soluong: (check_id.soluong - 1), data: check_id.data })
+                        .then(
+                            dispatch({ type: 'giam_cart', id: id, soluong: ((check_id.soluong - 1)), check: check }),
+                            toast.success(' đã giảm sản phẩm  ', {
+                                position: "bottom-left",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            })
+                        )
                 }
-                else {
+                else {  /// số lượng nhỏ hơn 1 
                     dispatch({ type: 'giam_cart', check: check })
                 }
 
@@ -192,6 +202,60 @@ export const delete_cart = (id) => (dispatch) => {
             const check_id = res.data.find(e => e.id == id)
             delete_cart_api(check_id.id_def)
             dispatch({ type: 'delete_cart', id: id })
+        })
+
+}
+
+
+
+export const postwish = (id, data) => async (dispatch) => {
+    return await api_cart.get('/wish')
+        .then(res => {
+            const check_id = res.data.find(e => e.id == id)
+
+            if (typeof check_id != 'undefined') {
+                toast.success(' sản phẩm đã có trong danh sách mong muốn', {
+                    position: "bottom-left",
+                    autoClose: 800,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+            }
+            else { /// nếu click sản phẩm mới nhanh thì hàm chỉ chạy điều kiện này
+                // console.log('check ')
+
+                return api_cart.post(`/wish`, { id: id, data: data })
+                    .then(
+
+                        dispatch({ type: 'post_wish', wish: { id: id, data: data } }),
+
+                        toast.success('add to wish!', {
+                            position: "bottom-left",
+                            autoClose: 800,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        })
+
+                    )
+            }
+        })
+
+}
+
+export const delete_wish = (id) => (dispatch) => {
+    return api_cart.get('/wish')
+        .then(res => {
+            const check_id = res.data.find(e => e.id == id)
+            delete_wish_api(check_id.id_def)
+            dispatch({ type: 'delete_wish', id: id })
         })
 
 }

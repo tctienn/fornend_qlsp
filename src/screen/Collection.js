@@ -17,6 +17,7 @@ import { store } from '../Redux/Store'
 /// thu viện thông báo
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Funtion_debounce, Funtion_debounce_wish } from '../Redux/Funtion_debounce'
 // import 'Reac-toastify/dist/ReactToastify.min.css';
 
 
@@ -204,41 +205,42 @@ function Collection({ states }) {
 
     /////////// end loc
 
-    const addwish = (item) => {
-        const dis = { type: 'add_wishlish', id: Number(item.id), data: item }
-        store.dispatch(dis)
-        // store.dispatch({ type: 'INCREMENT_COUNTER' })
+    // const addwish = (item) => {
+    //     const dis = { type: 'add_wishlish', id: Number(item.id), data: item }
+    //     store.dispatch(dis)
+    //     // store.dispatch({ type: 'INCREMENT_COUNTER' })
 
-        toast.success('add to wishlish!', {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        })
-    }
+
+    // }
+
+    // // const addcart = (item) => {
+    // //     // const discart = { type: 'add_cart', id: Number(item.id), data: item }
+    // //     // store.dispatch(discart)
+    // //     store.dispatch(postcart(item.id, 1, item))
+
+
+
+    // // }
+
+
+    const [value_de, setValue_de] = useState({ soluong: 0, data: {} })
+    const trangthai_de = Funtion_debounce(value_de, 800)
 
     const addcart = (item) => {
-        // const discart = { type: 'add_cart', id: Number(item.id), data: item }
-        // store.dispatch(discart)
-        store.dispatch(postcart(item.id, 1, item))
-
-        toast.success('add to cart!', {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        })
-
+        setValue_de({ soluong: (value_de.soluong + 1), data: item })
     }
 
+
+    ///wish
+    const [value_wish, setValue_wish] = useState({ soluong: 0, data: {} })
+    const trangthai_wish = Funtion_debounce_wish(value_wish, 800)
+    const addwish = (item) => {
+        // const dis = { type: 'add_wishlish', id: item.id, data: item }
+        // store.dispatch(dis)
+        setValue_wish({ soluong: (value_wish.soluong + 1), data: item }) // lấy cả số lượng để kiểm tra trường hợp số lượng bằng 0 khi mới load 
+
+        // store.dispatch({ type: 'INCREMENT_COUNTER' })
+    }
 
 
 
@@ -457,7 +459,7 @@ function Collection({ states }) {
                                                     <div className='hide_mini1' onClick={() => addwish(e)} style={{ width: '12%', height: '100%' }}>
                                                         <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                     </div>
-                                                    <div className='hide_mini2'>
+                                                    <div onClick={() => addcart(e)} className='hide_mini2'>
                                                         buy now
                                                     </div>
                                                     <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
@@ -500,10 +502,10 @@ function Collection({ states }) {
                                                     <div className='img_product2' style={{ height: '90%' }}>
                                                         <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '88%' }} src={e.img2} />
                                                         <div className=' hide_mini' style={{ height: '10%', backgroundColor: '#a749ff' }}>
-                                                            <div className='hide_mini1' onClick={() => addcart(e)} style={{ width: '12%', height: '100%' }}>
+                                                            <div className='hide_mini1' onClick={() => addwish(e)} style={{ width: '12%', height: '100%' }}>
                                                                 <iconify-icon icon="ph:heart" style={{ color: 'white' }}></iconify-icon>
                                                             </div>
-                                                            <div className='hide_mini2'>
+                                                            <div onClick={() => addcart(e)} className='hide_mini2'>
                                                                 buy now
                                                             </div>
                                                             <div className='hide_mini3' style={{ width: '12%', height: '100%' }}>
@@ -538,7 +540,7 @@ function Collection({ states }) {
                                                     !states.products ? '' : states.products.slice(page_number.current, (page_number.current + 9)).map((e, ii) =>
                                                         <div key={ii} className='product' style={{ width: '100%', aspectRatio: '60/25', margin: '11px 6px', display: 'flex' }} >
 
-                                                            <div className='img_product2' style={{ width: '34%', aspectRatio: '65/70' }}>
+                                                            <div className='img_product2' style={{ width: '34%', aspectRatio: '65/87' }}>
                                                                 <img onClick={() => onclickproduct(e.id)} className='img_mini' style={{ width: '100%', height: '100%' }} src={e.img2} />
                                                             </div>
                                                             <div style={{ width: '34%', aspectRatio: '65/87' }}>
@@ -569,11 +571,14 @@ function Collection({ states }) {
                                                                     alignItems: 'center',
                                                                 }}>
                                                                     {/* <input type='number' name='soluong' style={{ width: '20%' }} value={states.wishlish.find(e => e.id == id)?.soluong} /> */}
-                                                                    <div>
+                                                                    {/* <div>
                                                                         {states.wishlish.find(ee => ee.id == e.id)?.soluong}
-                                                                    </div>
+                                                                    </div> */}
                                                                     <button onClick={() => addcart(e)}>add to cart</button>
-                                                                    <iconify-icon icon="bi:heart" onClick={() => addwish(e)} style={{ color: 'gray' }}></iconify-icon>
+                                                                    <div onClick={() => addwish(e)} style={{ cursor: 'pointer' }} >
+                                                                        <iconify-icon icon="bi:heart" style={{ color: 'gray' }}></iconify-icon>
+                                                                    </div>
+
                                                                     <iconify-icon icon="fe:random" style={{ color: 'gray' }}></iconify-icon>
                                                                 </div>
                                                             </div>

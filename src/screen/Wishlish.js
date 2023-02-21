@@ -6,7 +6,12 @@ import Header2 from '../component/Header2'
 import Header from '../component/Header'
 import { products } from '../data/data'
 import { store } from '../Redux/Store'
+import { delete_wish } from '../Redux/Funtion_thunk'
+import { toast, ToastContainer } from 'react-toastify'
+// import Funtion_debounce from '../Redux/Funtion_debounce'
 // import { set } from 'immer/dist/internal'
+import { Funtion_debounce, Funtion_debounce_wish } from '../Redux/Funtion_debounce'
+
 
 function Wishlish({ states }) {
 
@@ -32,15 +37,30 @@ function Wishlish({ states }) {
     })
 
 
-    const delete_on_wish = (id) => {
-        let ay = { type: 'delete_wish', id: id }
-        store.dispatch(ay)
+    const delete_on_wish = (e) => {
+        // let ay = { type: 'delete_wish', id: id }
+        // store.dispatch(ay)
+        store.dispatch(delete_wish(e.id))
+
+        toast.success(' đã xóa sản phẩm : ' + e.data.name + ' khỏi danh sách mong muốn', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
 
+    const [value_de, setValue_de] = useState({ soluong: 0, data: {} })
+    const trangthai_de = Funtion_debounce(value_de, 800)
     const add_cart = (e) => {
-        console.log(e)
-        store.dispatch({ type: 'add_cart', id: e.id, data: e.data })
+        // console.log(e)
+        // store.dispatch({ type: 'add_cart', id: e.id, data: e.data })
+        setValue_de({ soluong: (value_de.soluong + 1), data: e.data })
     }
 
 
@@ -50,6 +70,7 @@ function Wishlish({ states }) {
     return (
         <div>
             {/* <Header /> */}
+            <ToastContainer />
             <div
                 id='scroller' style={{
                     // // border: '3px solid #00ff00',
@@ -122,7 +143,7 @@ function Wishlish({ states }) {
                                                 <button type="button" className="btn btn-dark" onClick={() => add_cart(e)}>add to cart</button>
                                             </td>
                                             <td>
-                                                <iconify-icon onClick={() => delete_on_wish(e.id)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
+                                                <iconify-icon onClick={() => delete_on_wish(e)} icon="bx:x" style={{ color: 'gray' }} width="20"></iconify-icon>
                                             </td>
                                         </tr>
                                     )}
@@ -139,7 +160,7 @@ function Wishlish({ states }) {
 const mapStateToProps = state => {
     const states = state;
     // todo: state.counter;
-    // console.log('test', states)
+    console.log('test', states.wishlish)
     return { states }
 };
 

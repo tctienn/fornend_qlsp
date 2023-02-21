@@ -8,12 +8,12 @@ import Header2 from '../component/Header2'
 import Hide_header from '../component/Hide_header'
 import Ontop from '../component/Ontop'
 import { products } from '../data/data'
-import { frech_thunk, get_tag, postcart } from '../Redux/Funtion_thunk'
+import { frech_thunk, get_tag, postcart, postwish } from '../Redux/Funtion_thunk'
 import { store } from '../Redux/Store'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Funtion_debounce } from '../Redux/Funtion_debounce'
+import { Funtion_debounce, Funtion_debounce_wish } from '../Redux/Funtion_debounce'
 
 
 function Home({ states }) {
@@ -78,22 +78,7 @@ function Home({ states }) {
         navigation(`/product/${id}`)
     }
 
-    const onclick_wish = (item) => {
-        const dis = { type: 'add_wishlish', id: item.id, data: item }
-        store.dispatch(dis)
 
-        toast.success('add to wishlish!', {
-            position: "bottom-left",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        })
-        // store.dispatch({ type: 'INCREMENT_COUNTER' })
-    }
 
     // const get_products = () => {
     //     store.dispatch(get_tag())
@@ -104,55 +89,21 @@ function Home({ states }) {
     const [value_de, setValue_de] = useState({ soluong: 0, data: {} })
     const trangthai_de = Funtion_debounce(value_de, 800)
 
-    const ham = () => {
-        // setValue_de({ ...value_de, soluong: (value_de.soluong + 1) })
-        // console.log(value_de)
-    }
-    // useEffect(() => {
-    //     if (trangthai_de != 'ui') {
-    //         console.log('trangthai_de')
-    //     }
-    //     // console.log(trangthai_de)
-    // }, [trangthai_de])
-
-
-
-    // function debounce(func, timeout = 300) {
-    //     let timer;
-    //     return (...args) => {
-    //         clearTimeout(timer);
-    //         timer = setTimeout(() => { func.apply(this, args); }, timeout);
-    //     };
-    // }
-    // // function saveInput(item) {
-    // //     console.log('Saving data' + item);
-    // // }
-    // const addcart_debounce = (item) => {
-    //     store.dispatch(postcart(item.id, 1, item))
-    // }
-    // const processChange = debounce((item) => addcart_debounce(item))
     const addcart = (item) => {
-        // const discart = { type: 'add_cart', id: Number(item.id), data: item }
-        // store.dispatch(postcart(item.id, 1, item))
-        // console.log(item.id)
-        // const processChange = debounce(() => saveInput());
-
-        // processChange(item)
-        // if (trangthai_de != 'ui') {
-        //     setValue_de({ soluong: (value_de.soluong + 1), data: item })
-        //     setValue_de({ soluong: 0, data: {} })
-        // }
         setValue_de({ soluong: (value_de.soluong + 1), data: item })
-        // setValue_de({ soluong: 0, data: {} })
-
-        // Funtion_debounce(value_de, 800)
-
-        // console.log(trangthai_de)
-        // if (trangthai_de != 'ui') { }
-
-
     }
 
+
+    ///wish
+    const [value_wish, setValue_wish] = useState({ soluong: 0, data: {} })
+    const trangthai_wish = Funtion_debounce_wish(value_wish, 800)
+    const onclick_wish = (item) => {
+        // const dis = { type: 'add_wishlish', id: item.id, data: item }
+        // store.dispatch(dis)
+        setValue_wish({ soluong: (value_wish.soluong + 1), data: item }) // lấy cả số lượng để kiểm tra trường hợp số lượng bằng 0 khi mới load 
+
+        // store.dispatch({ type: 'INCREMENT_COUNTER' })
+    }
     //////////end debounce
 
     return (
