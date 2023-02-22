@@ -130,8 +130,8 @@ function Home({ states }) {
                 {/* <button onClick={() => p}>
                     ay
                 </button> */}
-                <div className='slide'>
-                    <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+                <div className='slide' >
+                    <div id="carouselExampleInterval" style={{ zIndex: '0' }} className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active" data-bs-interval="10000">
                                 {/* <img src="..." className="d-block w-100" alt="..." /> */}
@@ -201,12 +201,12 @@ function Home({ states }) {
                                 </div>
                             </div>
                         </div>
-                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <button className="carousel-control-prev" style={{ zIndex: '0' }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                             {/* <span className="carousel-control-prev-icon" aria-hidden="true"></span> */}
                             <iconify-icon icon="material-symbols:arrow-back-ios-new" style={{ color: 'gray' }} width="50"></iconify-icon>
                             <span className="visually-hidden">Previous</span>
                         </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <button className="carousel-control-next" style={{ zIndex: '0' }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                             {/* <span className="carousel-control-next-icon" aria-hidden="true"></span> */}
                             <iconify-icon icon="material-symbols:arrow-back-ios-new" style={{ color: 'gray' }} rotate="180deg" width="50"></iconify-icon>
                             <span className="visually-hidden">Next</span>

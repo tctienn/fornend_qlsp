@@ -157,7 +157,7 @@ function Collection({ states }) {
 
             return value.target.value
         }) //// vấn đề bất đồng bộ khiến biến state không được gán chính xác lúc hàm thunk sử dụng
-        store.dispatch(sx_price(dataValue))
+        store.dispatch(sx_price(value.target.value))
     }
 
     /////////////////////// phân trang 

@@ -132,12 +132,12 @@ function Product({ states }) {
                                 {/* ////// zoom img */}
 
                                 <div className='zoom' style={{ display: openzoom == false ? 'none' : 'block' }}>
-                                    <iconify-icon icon="ph:x" onClick={zoom_click} style={{ color: 'gray', position: 'absolute', right: '10%', top: '10px', cursor: 'pointer' }}></iconify-icon>
+                                    <iconify-icon icon="ph:x" onClick={zoom_click} width='25' style={{ color: 'gray', position: 'absolute', right: '10%', top: '10px', cursor: 'pointer' }}></iconify-icon>
                                     <div style={{
                                         position: 'absolute', right: '20%', top: '2%'
                                     }}>
-                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-in-rounded" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
-                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-out" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
+                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-in-rounded" width='30' style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
+                                        <iconify-icon onClick={zoom_img} icon="material-symbols:zoom-out" width='30' style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                                     </div>
                                     <br />
                                     <div style={{
@@ -336,7 +336,7 @@ function Product({ states }) {
                             </div>
 
                             <div className='products' style={{ width: '100%' }}>
-                                <div className='product'>
+                                <div className='product detail'>
                                     <div className='mini_add'>
                                         new
                                     </div>
@@ -369,7 +369,7 @@ function Product({ states }) {
                                     </div>
                                 </div>
 
-                                <div className='product'>
+                                <div className='product detail'>
                                     <div className='mini_add'>
                                         new
                                     </div>
@@ -402,7 +402,7 @@ function Product({ states }) {
                                     </div>
                                 </div>
 
-                                <div className='product'>
+                                <div className='product detail'>
                                     <div className='mini_add'>
                                         new
                                     </div>
@@ -435,7 +435,7 @@ function Product({ states }) {
                                     </div>
                                 </div>
 
-                                <div className='product' >
+                                <div className='product detail' >
                                     <div className='mini_add'>
                                         new
                                     </div>

@@ -76,12 +76,10 @@ export const sx_price = (hienthi) => async (dispatch) => {
 
     const res = await getProducts();
     var sx
-    if (hienthi == 'Defalt') {
+    if (hienthi == 'default') {
         sx = res.data
+
     }
-
-    // res = res.data.filter(e => e.loai.filter(ee => ee == 'men').length > 0)
-
     else {
         if (hienthi == 'giam') {
 
