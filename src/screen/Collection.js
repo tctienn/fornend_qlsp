@@ -328,8 +328,8 @@ function Collection({ states }) {
 
                             </div>
 
-                            <div onClick={() => search(searchValue)} style={{ cursor: 'pointer' }}>
-                                <iconify-icon icon="carbon:search" style={{ color: 'gray' }}></iconify-icon>
+                            <div onClick={() => search(searchValue)} >
+                                <iconify-icon icon="carbon:search" style={{ color: 'gray', cursor: 'pointer' }}></iconify-icon>
                             </div>
                         </div>
 

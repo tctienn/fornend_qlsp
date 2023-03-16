@@ -259,3 +259,13 @@ export const delete_wish = (id) => (dispatch) => {
         })
 
 }
+
+export const clear_cart = (cartitem) => (dispatch) => {
+    cartitem.map(e => {
+        delete_cart_api(e.id_def)
+
+
+    })
+    dispatch({ type: 'clear_cart' })
+
+}

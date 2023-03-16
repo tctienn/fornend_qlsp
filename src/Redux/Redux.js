@@ -167,9 +167,9 @@ const ReduxF = (state = initialState, action) => {
         // }
         // return { ...state, TH: th, cart: ay2 }
 
-        // case ('clear_cart'):
-        // var ay2 = []
-        // return { ...state, cart: ay2 }
+        case ('clear_cart'):
+            var ay2 = []
+            return { ...state, cart: ay2 }
 
 
         case ('get_products'):

@@ -10,7 +10,7 @@ import { store } from '../Redux/Store'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_cart, getProducts, getcart } from '../Axiot/api'
-import { delete_cart, giam_cart, postcart } from '../Redux/Funtion_thunk'
+import { clear_cart, delete_cart, giam_cart, postcart } from '../Redux/Funtion_thunk'
 
 
 function Cart({ states }) {
@@ -106,8 +106,8 @@ function Cart({ states }) {
 
     }
 
-    const onclick_clear_cart = () => {
-        store.dispatch({ type: 'clear_cart' })
+    const onclick_clear_cart = (cartitem) => {
+        store.dispatch(clear_cart(cartitem))
 
     }
 
@@ -220,10 +220,12 @@ function Cart({ states }) {
                             </table>
                             <br />
                             <div style={{ display: 'flex', justifyContent: 'space-between', }} >
-                                <div className='buttoncart'>
+
+                                <Link to={'/'} className='buttoncart' style={{ textDecoration: 'none' }} >
                                     CONTINUE SHOPPING
-                                </div>
-                                <div onClick={onclick_clear_cart} className='buttoncart'>
+                                </Link>
+
+                                <div onClick={() => onclick_clear_cart(states.cart)} className='buttoncart'>
                                     CLEAR SHOPPING CART
                                 </div>
                             </div>
