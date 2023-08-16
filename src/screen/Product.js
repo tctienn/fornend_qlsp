@@ -17,6 +17,7 @@ function Product({ states }) {
     let { id } = useParams()  /// id được gửi bằng useparam nếu load lại trang thì sẽ bị mất id có thể thay thế chức năng năng này bằng cách lấy id của url 
     var check = true
     const data = states.products?.find(e => e.id == id)
+    
 
 
 
@@ -121,7 +122,7 @@ function Product({ states }) {
                             <Link to={'/'} className='Link_name_product'>HOME</Link> / SHOP PRODUCT
                         </div>
                         <br /><br />
-                        <div style={{ width: '52%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}>
+                        <div  style={{ width: '52%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}>
                             <div style={{ width: '47%', position: 'relative' }}>
                                 <iconify-icon onClick={zoom_click} icon="material-symbols:zoom-out-map-rounded" style={{
                                     color: 'gray', position: 'absolute',
@@ -146,14 +147,14 @@ function Product({ states }) {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                     }}>
-                                        <img className='img_zoom' style={{ width: `${size_img}%` }} src={data.img1} />
+                                        <img className='img_zoom' style={{ width: `${size_img}%` }} src={data?.mainImg} /> 
 
                                     </div>
                                 </div>
 
 
                                 {/* ////// */}
-                                <img style={{ width: '100%', aspectRatio: '6/7', marginBottom: '10px' }} src={data.img1} />
+                                <img style={{ width: '100%', aspectRatio: '6/7', marginBottom: '10px',border:'10px' }} src={data.mainImg} />
                                 <button className='button_slide' onClick={giam}>
                                     <iconify-icon icon="material-symbols:arrow-back-ios-new" style={{ color: 'gray' }}></iconify-icon>
                                 </button>
@@ -161,13 +162,16 @@ function Product({ states }) {
                                     <iconify-icon icon="material-symbols:arrow-forward-ios-rounded" style={{ color: 'gray' }}></iconify-icon>
                                 </button>
                                 <div className='swipe'>
-                                    <img className='muntil_img_slide' style={{ marginLeft: `${marginleft}%` }} src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
-                                    <img className='muntil_img_slide' src="https://flone.jamstacktemplates.dev/assets/img/product/fashion/9.jpg" />
+                                    {/* <img className='muntil_img_slide' style={{ marginLeft: `${marginleft}%` }} src={data.images[0]?data.images[0].url:""} />  */}
+                                    {data.images?.map((e,id)=>
+                                    
+                                        id>0?
+                                            (<img key={id} className='muntil_img_slide' src={e.url} />)
+                                            :(<img key={id}style={{ marginLeft: `${marginleft}%` }}  className='muntil_img_slide' src={e.url} />)
+                                        
+                                    )}
+                                       
+                                    
 
                                 </div>
 
@@ -178,12 +182,12 @@ function Product({ states }) {
                                 </b>
                                 <br />
                                 <b style={{ color: '#fe5252' }}>
-                                    €{data.gia}
+                                    {data.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                                 </b>
                                 <br />
                                 {i.map(ei => <iconify-icon key={ei} icon="ic:twotone-star-outline" style={{ color: data.start >= ei ? '#ffaa00' : 'gray' }}></iconify-icon>)}
                                 <p>
-                                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+                                    {data.motaNgan}
                                 </p>
                                 <hr />
 
@@ -203,15 +207,16 @@ function Product({ states }) {
                                 </div>
                                 <br />
                                 <div>
-                                    Categories : {data.loai?.map(e =>
-                                        <Link key={e} className='Link_name_product' to={'/collection'}>
-                                            {e} ,
+                               
+                                    Categories : {data.catergores?.map((e,i) =>
+                                        <Link key={i} className='Link_name_product' to={'/collection'}> 
+                                            {e.name} , 
                                         </Link>
                                     )}
                                     <br /><br />
-                                    tag : {data.loai?.map(e =>
-                                        <Link key={e} className='Link_name_product' to={'/collection'}>
-                                            {e} ,
+                                    tag : {data.tags?.map((e,i) =>
+                                        <Link key={i} className='Link_name_product' to={'/collection'}>
+                                            {e.name} ,
                                         </Link>
                                     )}
                                 </div>

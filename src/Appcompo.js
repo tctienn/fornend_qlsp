@@ -36,7 +36,7 @@ import Demo2 from './screen/Demo2';
 import Demo4 from './screen/Demo4';
 import DemoRedux from './screen/DemoRedux';
 import Home from './screen/Home';
-import Products from './screen/Products';
+// import Products from './screen/Products';
 import Product from './screen/Product';
 import Wishlish from './screen/Wishlish';
 import Cart from './screen/Cart';
@@ -44,6 +44,9 @@ import Collection from './screen/Collection';
 import Push from './screen/demo/Push';
 import Push2 from './screen/demo/Push2';
 
+
+
+import Login from './screen/Login';
 
 export default function Appcompo() {
     return (
@@ -69,6 +72,8 @@ export default function Appcompo() {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/wishlish' element={<Wishlish />} />
                 <Route path='/collection' element={<Collection />} />
+                <Route path='/login' element={<Login />} />
+                
 
 
                 {/* <Route path='/' element={< Products />} /> */}

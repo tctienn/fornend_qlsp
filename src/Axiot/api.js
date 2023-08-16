@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react';
+import { getCookie, taocock } from './taocock';
 
 // axios.get(`https://62b6e8c76999cce2e809fa1e.mockapi.io/dkt/products`)
 
@@ -55,4 +56,85 @@ export const getwish = () => {
 
 export const delete_wish_api = (param) => {
     return api_cart.delete(`/wish/${param}`)
+}
+
+
+///////////////////////////////////////////
+
+
+export const api_login = axios.create({
+    baseURL: 'http://localhost:8888/login',
+    // baseURL: 'http://localhost:3000/',
+    timeout: 30000,
+    // headers: {'X-Custom-Header': 'foobar'}
+});
+
+export const post_login = (data) => {
+    console.log(data)
+    return api_login.post(``,data);
+}
+
+api_login.interceptors.response.use(function(response) {
+    // Trả về dữ liệu phản hồi
+    // console.log('ay :', response)
+    // localStorage.setItem('token', response.data.access_token)
+    taocock('login_token' , response.data.access_token,'36000');
+        // console.log(localStorage.getItem('token'))
+
+    return response;
+}, function(error) {
+    // Xử lý lỗi
+    console.log('lỗi')
+    return Promise.reject(error);
+});
+
+
+//////////// public
+
+export const api_product = axios.create({
+    baseURL: 'http://localhost:8888/public/get-products',
+    // baseURL: 'http://localhost:3000/',
+    // timeout: 30000,
+    // headers: {'X-Custom-Header': 'foobar'}
+});
+
+export const get_products =()=>{
+
+    return api_product.get();
+}
+
+
+/////// user
+
+export const api_user  = axios.create({
+    baseURL: 'http://localhost:8888/user/get-cart',
+    // baseURL: 'http://localhost:3000/',
+    // timeout: 30000,
+    // headers: {'X-Custom-Header': 'foobar'}
+});
+
+api_user.interceptors.request.use(function(config) {
+    if (config.method === 'get') {
+        // var token = localStorage.getItem('token')
+        var token = getCookie('login_token')
+        if (token) {
+            config.data = null // xác nhận phương thức get không gửi dữ liệu 
+            config.headers = {
+                Authorization: `Bearer ${token}`,
+                'Accept': 'application/json', // báo cho máy chủ muốn nhận dữ liệu response dạng json 
+                'Content-Type': 'application/json'
+            };
+            return config
+        }
+    }
+
+}, function(error) {
+    // Xử lý lỗi
+    console.log('lỗi ở intercepter')
+    return Promise.reject(error);
+});
+
+export const get_carts =()=>{
+
+    return api_user.get();
 }

@@ -1,8 +1,8 @@
-import { api_cart, delete_cart_api, delete_wish_api, getProducts, search } from "../Axiot/api"
+import { api_cart, delete_cart_api, delete_wish_api, getProducts, get_products, search } from "../Axiot/api"
 import { ToastContainer, toast } from 'react-toastify';
 
 export const frech_thunk = () => async (dispatch) => {
-    const res = await getProducts();
+    const res = await get_products();
 
     // console.log('ay', res.data)
     dispatch({ type: 'get_products', products: res.data })
@@ -104,10 +104,7 @@ export const postcart = (id, soluong, data) => async (dispatch) => {
     return await api_cart.get('/cart')
         .then(res => {
             const check_id = res.data.find(e => e.id == id)
-            // some array ??
-            // const resss = res
-            // console.log("action: ", check_id, id, data, resss)
-            // console.log(typeof check_id, id)
+
             if (typeof check_id != 'undefined') {
                 // console.log('check ', check_id)
                 api_cart.put(`/cart/${check_id.id_def}`, { id: check_id.id, soluong: (check_id.soluong + soluong), data: data })
