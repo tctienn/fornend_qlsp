@@ -8,52 +8,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import Initial from "./Initial";
-// const data = {
-//     value: 1,
-// }
-
-
-// export const thunk_funtion = createAsyncThunk('reduc1/thunk_funtion', async () => {
-//     const response = await api.get('/products/1')
-//     // console.log('ay', response.data)
-//     return response.data
-
-// })
-
-
-// const ReduxF = createSlice({
-//     name: 'reduc1',
-//     initialState: data,
-//     reducers: {
-//         add: (state) => {
-//             state.value += 1
-//         }
-//     },
-//     extraReducers: {
-//         [thunk_funtion.fulfilled]: (state, action) => {
-//             return action.payload
-//         },
-//     },
-// })
-
-// export const { add, } = ReduxF.actions
-// export default ReduxF.reducer
-
-
-// const getallcart = () => async (dispatch) => {
-//     const res = await getcart();
-
-//     console.log('ay', res.data)
-//     dispatch({ type: 'getcart', cart: res.data })
-
-// }
-
-// // const getallcart = getcart
-
-// // const runFunc = getcart()
-
-// // console.log('fg', runFunc)
-
 
 
 const initialState = {
@@ -141,31 +95,7 @@ const ReduxF = (state = initialState, action) => {
             ay2 = ay2.filter(e => e.id != action.id)
             return { ...state, cart: ay2 }
 
-        // case ('tang_cart'):
-        // var ay2 = state.cart
-        // for (let ii = 0; ii < ay2.length; ii++) {
-        //     if (ay2[ii].id == action.id) {
-        //         ay2[ii].soluong++
-        //         break
-        //     }
-        // }
-        // return { ...state, TH: false, cart: ay2 }
-
-        // case ('giam_cart'):
-        // var ay2 = state.cart
-        // var th = false
-        // for (let ii = 0; ii < ay2.length; ii++) {
-        //     if (ay2[ii].id == action.id) {
-        //         if (ay2[ii].soluong > 1) {
-        //             ay2[ii].soluong--
-        //             break
-        //         }
-        //         else {
-        //             th = true
-        //         }
-        //     }
-        // }
-        // return { ...state, TH: th, cart: ay2 }
+        
 
         case ('clear_cart'):
             var ay2 = []
@@ -210,11 +140,7 @@ const ReduxF = (state = initialState, action) => {
 
 
         case ('giam_cart'):
-            // var cart_ar = state.cart
-            // cart_ar.push(action.cart)
-
-
-            // state = state.cart.map(e => e.id == action.id ? e.soluong-- : '')
+      
 
             if (action.check == true) {
                 // console.log(state.cart)
@@ -246,12 +172,6 @@ const ReduxF = (state = initialState, action) => {
             return { ...state, wishlish: action.wish }
 
         default:
-            // getallcart()/// load cart lần đầu
-            // console.log(initializeData())
-            // initializeData()
-            // console.log(ay)
-            // var as = []
-
 
             return state
     }

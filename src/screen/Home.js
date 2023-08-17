@@ -18,18 +18,8 @@ import { Funtion_debounce, Funtion_debounce_wish } from '../Redux/Funtion_deboun
 
 function Home({ states }) {
 
-
-    // const output = document.querySelector("#output");
-
     const [as, setAs] = useState('')
 
-    // useEffect(() => {
-    //     var scroller = document.querySelector("#scroller");
-    //     scroller.addEventListener("scroll", (event) => {
-    //         // output.textContent = `scrollTop: ${scroller.scrollTop}`;
-    //         setAs(scroller.scrollTop)
-    //     }, [as]);
-    // })
 
     window.addEventListener('scroll', () => {
         setAs(window.scrollY)
@@ -53,23 +43,7 @@ function Home({ states }) {
     // const dispatch = useDispatch()
 
     const [data, setData] = useState()
-    // useEffect(() => {
-    //     // const frech = async () => {
-    //     //     const res = await getProducts();
-    //     //     setData(res.data)
-    //     //     console.log('ay', res.data)
-
-    //     // }
-    //     // frech()
-    //     store.dispatch(frech_thunk())
-    //     // setData(states)
-    //     // console.log('vl', states)
-
-    //     // dispatch(thunk_funtion())
-    // }, [])
-
-
-    /// ayyy
+ 
     const i = [1, 2, 3, 4, 5]
 
     const navigation = useNavigate()
@@ -98,11 +72,9 @@ function Home({ states }) {
     const [value_wish, setValue_wish] = useState({ soluong: 0, data: {} })
     const trangthai_wish = Funtion_debounce_wish(value_wish, 800)
     const onclick_wish = (item) => {
-        // const dis = { type: 'add_wishlish', id: item.id, data: item }
-        // store.dispatch(dis)
+
         setValue_wish({ soluong: (value_wish.soluong + 1), data: item }) // lấy cả số lượng để kiểm tra trường hợp số lượng bằng 0 khi mới load 
 
-        // store.dispatch({ type: 'INCREMENT_COUNTER' })
     }
     //////////end debounce
 
