@@ -5,7 +5,9 @@ import { getCookie, taocock } from './taocock';
 // axios.get(`https://62b6e8c76999cce2e809fa1e.mockapi.io/dkt/products`)
 
 export const api = axios.create({
-    baseURL: 'https://62d59d9515ad24cbf2caa1cd.mockapi.io/tets/',
+    // baseURL: 'https://62d59d9515ad24cbf2caa1cd.mockapi.io/tets/',
+    baseURL: 'https://657695fa0fd5d07e432eabee.mockapi.io/products',
+
     // baseURL: 'http://localhost:3000/',
     timeout: 30000,
     // headers: {'X-Custom-Header': 'foobar'}
@@ -89,10 +91,10 @@ api_login.interceptors.response.use(function(response) {
 });
 
 
-//////////// public
+//////////// public   cái này dùng làm gì quên mịa nó rồi
 
 export const api_product = axios.create({
-    baseURL: 'http://localhost:8888/public/get-products',
+    baseURL: 'https://657695fa0fd5d07e432eabee.mockapi.io/products',
     // baseURL: 'http://localhost:3000/',
     // timeout: 30000,
     // headers: {'X-Custom-Header': 'foobar'}
